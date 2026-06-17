@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusSense: Case Study | Yashita Mouli</title>
+    <meta name="description" content="FocusSense, a privacy-first productivity analytics platform via client-side computer vision. 100% local processing, zero video data sent to any server.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <span class="nav-logo">Yashita Mouli</span>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+
+        <!-- â”€â”€ HEADER â”€â”€ -->
+        <header class="case-study-header">
+            <p class="label">Computer Vision · Productivity · Privacy-First</p>
+            <h1 class="case-title">FocusSense</h1>
+            <p class="cs-tagline">Client-side productivity intelligence platform that tracks focus state using computer vision entirely on the user's device. Head pose estimation, eye gaze tracking, and explainable focus scoring. Zero video data sent to any server.</p>
+            <div class="case-meta">
+                <span>Sole Developer</span>
+                <span>Python · OpenCV · MediaPipe · FastAPI · Next.js</span>
+                <span>100% Client-Side Processing</span>
+            </div>
+        </header>
+
+        <!-- â”€â”€ METRICS â”€â”€ -->
+        <div class="metrics-strip cs-block">
+            <div class="metric-pill"><strong>100%</strong><span>Client-Side Processing</span></div>
+            <div class="metric-pill"><strong>Zero</strong><span>Video Data to Server</span></div>
+            <div class="metric-pill"><strong>468</strong><span>Facial Landmarks</span></div>
+            <div class="metric-pill"><strong>CV-Based</strong><span>Focus State Detection</span></div>
+            <div class="metric-pill"><strong>Explainable</strong><span>Focus Scores</span></div>
+            <div class="metric-pill"><strong>SQLite</strong><span>Local Session History</span></div>
+        </div>
+
+        <!-- â”€â”€ OVERVIEW â”€â”€ -->
+        <section class="case-content-section">
+            <h2>Overview</h2>
+            <p>FocusSense is a productivity analytics platform that uses computer vision to detect and quantify focus state during work sessions. The system tracks <strong>head pose</strong> (pitch, yaw, roll) and <strong>eye gaze direction</strong> in real-time to infer whether a user is looking at their screen, looking away, or exhibiting distraction patterns, all processed locally via OpenCV and MediaPipe on the user's own machine.</p>
+            <p>Session analytics are stored in a local SQLite database and served through a FastAPI backend. A Next.js dashboard presents focus scores, distraction event timelines, and longitudinal session comparisons. No frame, image, or video data is ever transmitted outside the local machine. Privacy is guaranteed by architecture, not policy.</p>
+        </section>
+
+        <!-- â”€â”€ THE PROBLEM â”€â”€ -->
+        <section class="case-content-section">
+            <h2>The Problem</h2>
+            <p>Existing productivity tracking tools fall into two categories: browser-based monitoring (invasive, tracks websites visited and time spent) or webcam-based tools that stream video to remote servers for analysis (unacceptable for anyone who cares about privacy). Neither approach gives users objective focus data they can trust and act on.</p>
+            <p>The specific challenge: computer vision-based focus tracking has typically required cloud inference because running CV models locally was assumed to be too slow. MediaPipe changed this assumption. It provides real-time landmark detection performant enough for per-frame analysis on CPU without latency issues.</p>
+            <div class="cs-highlight">
+                <strong>Privacy-by-architecture:</strong> The privacy guarantee in FocusSense doesn't come from a privacy policy or server-side encryption. It comes from the fact that video frames never leave the local Python process. No network call exists to compromise. This is a structural guarantee, not a promised one.
+            </div>
+        </section>
+
+        <!-- â”€â”€ SYSTEM ARCHITECTURE â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">System Architecture</p>
+            <div class="project-cols">
+                <div>
+                    <div class="arch-diagram">
+                        <div class="arch-node arch-highlight">
+                            <div class="arch-node-title">Webcam Input</div>
+                            <div class="arch-node-sub">Local device only · no network</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-node">
+                            <div class="arch-node-title">OpenCV Frame Capture</div>
+                            <div class="arch-node-sub">Per-frame processing pipeline</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-node arch-highlight">
+                            <div class="arch-node-title">MediaPipe Face Mesh</div>
+                            <div class="arch-node-sub">468 facial landmarks · CPU inference</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-parallel">
+                            <div class="arch-node">
+                                <div class="arch-node-title">Head Pose</div>
+                                <div class="arch-node-sub">solvePnP · pitch/yaw/roll</div>
+                            </div>
+                            <div class="arch-node">
+                                <div class="arch-node-title">Eye Gaze</div>
+                                <div class="arch-node-sub">Iris position · EAR</div>
+                            </div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-node arch-highlight">
+                            <div class="arch-node-title">Focus State Classifier</div>
+                            <div class="arch-node-sub">Rule-based + temporal window</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-node">
+                            <div class="arch-node-title">SQLite Session Store</div>
+                            <div class="arch-node-sub">Local · timestamped events</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-node arch-highlight">
+                            <div class="arch-node-title">FastAPI + Next.js Dashboard</div>
+                            <div class="arch-node-sub">Local API · analytics visualization</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="label">Local-First Data Flow</p>
+                    <div class="deploy-chain">
+                        <div class="deploy-layer">
+                            <span class="deploy-layer-label">Capture</span>
+                            <div class="deploy-layer-tech"><span class="chip">OpenCV</span><span class="chip">Local webcam</span></div>
+                        </div>
+                        <div class="deploy-layer">
+                            <span class="deploy-layer-label">CV Layer</span>
+                            <div class="deploy-layer-tech"><span class="chip">MediaPipe</span><span class="chip">solvePnP</span></div>
+                        </div>
+                        <div class="deploy-layer">
+                            <span class="deploy-layer-label">Classify</span>
+                            <div class="deploy-layer-tech"><span class="chip">Rule engine</span><span class="chip">Temporal window</span></div>
+                        </div>
+                        <div class="deploy-layer">
+                            <span class="deploy-layer-label">Storage</span>
+                            <div class="deploy-layer-tech"><span class="chip">SQLite</span><span class="chip">Local disk only</span></div>
+                        </div>
+                        <div class="deploy-layer">
+                            <span class="deploy-layer-label">Analytics</span>
+                            <div class="deploy-layer-tech"><span class="chip">Pandas</span><span class="chip">FastAPI</span></div>
+                        </div>
+                        <div class="deploy-layer">
+                            <span class="deploy-layer-label">UI</span>
+                            <div class="deploy-layer-tech"><span class="chip">Next.js</span><span class="chip">Tailwind CSS</span></div>
+                        </div>
+                    </div>
+
+                    <p class="label" style="margin-top: 2rem;">Full Tech Stack</p>
+                    <div class="chip-row">
+                        <span class="chip">Python</span><span class="chip">OpenCV</span>
+                        <span class="chip">MediaPipe</span><span class="chip">FastAPI</span>
+                        <span class="chip">SQLite</span><span class="chip">Pandas</span>
+                        <span class="chip">Next.js</span><span class="chip">TypeScript</span>
+                        <span class="chip">Tailwind CSS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- â”€â”€ TECHNICAL DEEP DIVE â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Technical Deep Dive</p>
+            <div class="deep-dive-grid">
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">Head Pose Estimation</div>
+                        <span class="deep-item-tag">MediaPipe + solvePnP</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p><strong>MediaPipe Face Mesh</strong> provides 468 3D facial landmark coordinates per frame at real-time speeds on CPU. A subset of these landmarks (the eye corners, nose tip, chin, and cheek landmarks) forms a well-defined 3D face model. Using OpenCV's <strong>solvePnP</strong> function with these landmarks and a generic 3D face reference model computes the rotation matrix that best fits the observed 2D landmark positions to the 3D model.</p>
+                        <p>The rotation matrix is decomposed into Euler angles: <strong>pitch</strong> (nodding up/down), <strong>yaw</strong> (turning left/right), and <strong>roll</strong> (tilting). Focus state inference uses primarily yaw and pitch: a yaw angle exceeding ±20° or pitch exceeding ±25° indicates the user is looking away from the screen. These thresholds were calibrated empirically across different monitor distances and face sizes.</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">Eye Gaze and Openness Tracking</div>
+                        <span class="deep-item-tag">Iris Landmarks + EAR</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>MediaPipe provides <strong>iris landmark coordinates</strong> within each eye, allowing gaze direction to be estimated from the relative position of the iris center within the eye bounding box. Iris position skewed strongly left or right indicates off-screen gaze even when head pose is approximately forward-facing.</p>
+                        <p><strong>Eye Aspect Ratio (EAR)</strong>, the ratio of eye height to eye width computed from the eye landmarks, detects eye openness. Sustained low EAR indicates closed eyes (sleep, disengagement) while normal EAR variations correspond to natural blinking. The EAR threshold for "closed" was calibrated to distinguish normal blinks (100-150ms) from sustained closure (fatigue indicator at 300ms+).</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">Focus State Classifier</div>
+                        <span class="deep-item-tag">Temporal Window + Rule Engine</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>Per-frame head pose and gaze readings are noisy, and any single frame classification produces high false positive rates (a brief glance at a phone isn't a distraction event). The focus state classifier uses a <strong>7-second temporal window</strong> with a majority-vote rule: a distraction is only logged if more than 65% of frames within the window indicate off-screen gaze. This dramatically reduces false positives from natural micro-movements.</p>
+                        <p>State transitions have asymmetric hysteresis: entering "distracted" state requires 4.5 seconds of sustained off-gaze, but returning to "focused" state requires only 2 seconds of on-gaze. This asymmetry reflects the real cost of counted distractions: better to be slightly lenient on re-entry than to count brief recoveries as false "focused" periods.</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">Explainable Focus Score</div>
+                        <span class="deep-item-tag">Composable Metric Design</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>The session Focus Score is a composite of three sub-metrics: <strong>attention duration ratio</strong> (percentage of session time in focused state), <strong>distraction frequency</strong> (normalized distraction events per hour, penalizing frequent brief distractions more than rare long ones), and <strong>average distraction depth</strong> (mean duration of distraction events, capturing whether the user is briefly glancing away vs. fully disengaging).</p>
+                        <p>Each sub-metric is shown alongside the composite score on the dashboard with a plain-language explanation of what drove it low. "Your score is 62. Distraction frequency is the biggest drag (14 events/hour vs. your 7-day average of 9). Most distractions occurred between 2:30 and 3:15 PM." This explainability layer was the feature users responded to most positively. A number without a reason is just a grade.</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">SQLite Session Storage and Analytics</div>
+                        <span class="deep-item-tag">Local-First Time-Series</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>Session data is stored in a local <strong>SQLite database</strong> with three core tables: sessions (session_id, start_time, end_time, focus_score), events (session_id, event_type, timestamp, duration), and aggregates (session_id, attention_ratio, distraction_count, avg_distraction_depth). The events table provides raw time-series data for detailed per-session analysis.</p>
+                        <p><strong>Pandas</strong> is used for the analytics layer: computing rolling averages, identifying distraction time-of-day patterns, and computing week-over-week score trends. The FastAPI backend exposes these as typed endpoints consumed by the Next.js dashboard. SQLite's file-based storage means session history is durable, portable, and requires zero infrastructure. The database is just a file in the user's home directory.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- â”€â”€ CHALLENGES SOLVED â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Challenges Solved</p>
+            <div class="challenges-list">
+                <div class="challenge-item"><strong>Head pose accuracy across face sizes and monitor distances</strong>: threshold calibration for pitch/yaw angles accounts for varying user-to-monitor distances; solvePnP with scaled 3D reference model handles face size variation robustly.</div>
+                <div class="challenge-item"><strong>Distinguishing "thinking with eyes closed" from "distracted"</strong>: EAR duration thresholds (300ms for fatigue indicator vs. 150ms for normal blink) combined with concurrent head pose data avoid penalizing legitimate closed-eye thinking.</div>
+                <div class="challenge-item"><strong>False positives from natural micro-movements</strong>: 7-second temporal window with 65% majority threshold filters out brief natural head movements and brief intentional glances that don't represent genuine distraction.</div>
+                <div class="challenge-item"><strong>Explainability for user engagement</strong>: raw scores without causal explanations don't drive behavior change. Per-sub-metric breakdown with time-of-day pattern analysis gives users actionable information rather than just a verdict.</div>
+                <div class="challenge-item"><strong>Privacy guarantee by architecture</strong>: no network path for video data exists in the codebase. FastAPI only serves analytics from SQLite - never frames, never images. Privacy is enforced by code structure, not server configuration.</div>
+            </div>
+        </div>
+
+        <!-- â”€â”€ RESULTS â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Results</p>
+            <div class="result-grid">
+                <div class="result-item">
+                    <div class="result-value">100%</div>
+                    <div class="result-label">Client-Side</div>
+                    <div class="result-note">All CV processing on local device, no remote inference</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value">Zero</div>
+                    <div class="result-label">Data Transmitted</div>
+                    <div class="result-note">No frames, images, or video leave the local machine</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value">468</div>
+                    <div class="result-label">Landmarks / Frame</div>
+                    <div class="result-note">MediaPipe Face Mesh on CPU at real-time speed</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value">3</div>
+                    <div class="result-label">Score Components</div>
+                    <div class="result-note">Attention ratio · distraction frequency · distraction depth</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- â”€â”€ LESSONS LEARNED â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Lessons Learned</p>
+            <div class="lesson-grid">
+                <div class="lesson-card">
+                    <div class="lesson-num">01</div>
+                    <div class="lesson-title">MediaPipe's 468-point face mesh is more than enough for robust head pose</div>
+                    <div class="lesson-body">Earlier approaches using only 68-point face models required careful feature selection. MediaPipe's 468-point mesh provides enough landmark density that solvePnP produces stable, accurate Euler angles even with partial face occlusion (glasses, hands near face).</div>
+                </div>
+                <div class="lesson-card">
+                    <div class="lesson-num">02</div>
+                    <div class="lesson-title">Temporal context windows eliminate most false positives</div>
+                    <div class="lesson-body">Per-frame classification produced 3-4x too many distraction events. A 7-second majority-vote window reduced false positives dramatically with minimal impact on true detection latency - a natural glance away takes 1-2 seconds, a real distraction takes 5+ seconds.</div>
+                </div>
+                <div class="lesson-card">
+                    <div class="lesson-num">03</div>
+                    <div class="lesson-title">Explainability is essential for productivity tools</div>
+                    <div class="lesson-body">Users disengaged when shown only a focus score without explanation. When the dashboard showed "most distractions between 2:30-3:15 PM" and "distraction frequency is 2x your weekly average," engagement and behavior change followed. The explanation was the product, not the number.</div>
+                </div>
+                <div class="lesson-card">
+                    <div class="lesson-num">04</div>
+                    <div class="lesson-title">SQLite is the right database for local-first applications</div>
+                    <div class="lesson-body">Zero setup, zero maintenance, portable as a file, fast for time-series aggregations with proper indexing. For an application designed to run locally with no cloud dependency, SQLite's simplicity is a feature - there's nothing to configure, backup remotely, or maintain.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- â”€â”€ FUTURE ROADMAP â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Future Roadmap</p>
+            <div class="roadmap-list">
+                <div class="roadmap-item">
+                    <span class="roadmap-phase">Phase 1</span>
+                    <div class="roadmap-text"><strong>Personalized threshold calibration</strong>: a 3-minute calibration session at the start where the user looks at screen/away/reads establishes personalized head pose and gaze baselines rather than relying on population-average thresholds.</div>
+                </div>
+                <div class="roadmap-item">
+                    <span class="roadmap-phase">Phase 2</span>
+                    <div class="roadmap-text"><strong>Pomodoro integration</strong>: focus session scheduling with automatic session segmentation and per-pomodoro score tracking, surfacing whether focus quality varies across work blocks.</div>
+                </div>
+                <div class="roadmap-item">
+                    <span class="roadmap-phase">Phase 3</span>
+                    <div class="roadmap-text"><strong>Optional encrypted cloud sync</strong>: end-to-end encrypted sync of aggregated session stats (never frames) for multi-device history consolidation, giving users longitudinal trends across devices without any privacy compromise.</div>
+                </div>
+                <div class="roadmap-item">
+                    <span class="roadmap-phase">Phase 4</span>
+                    <div class="roadmap-text"><strong>Team analytics dashboard</strong>: opt-in aggregated focus analytics for remote teams, showing team-level trends without exposing individual session data, useful for managers monitoring for burnout signals without surveillance.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cs-footer-nav">
+            <a href="index.html#projects" class="btn btn-ghost">← Back to Projects</a>
+        </div>
+
+    </main>
+
+    <footer id="contact">
+        <div class="footer-inner">
+            <p class="footer-statement">Let's build something exceptional.</p>
+            <div class="footer-links">
+                <a href="https://linkedin.com/in/yashita-mouli" class="footer-link">LinkedIn ↗</a>
+                <a href="https://github.com/yashitamoulin01-star" class="footer-link">GitHub ↗</a>
+                <a href="mailto:mouliyashita@gmail.com" class="footer-link">mouliyashita@gmail.com ↗</a>
+            </div>
+            <div class="footer-bottom">&copy; Yashita Mouli · B.Tech EXTC, NMIMS MPSTME · 2028</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

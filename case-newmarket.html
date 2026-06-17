@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewMarket: Case Study | Yashita Mouli</title>
+    <meta name="description" content="NewMarket.co.in, a hyperlocal community platform scaled to 50K+ users and 100K+ listings with sub-200ms query performance.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <span class="nav-logo">Yashita Mouli</span>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+
+        <!-- â”€â”€ HEADER â”€â”€ -->
+        <header class="case-study-header">
+            <p class="label">Marketplace · Community · Full-Stack</p>
+            <h1 class="case-title">NewMarket.co.in</h1>
+            <p class="cs-tagline">Hyperlocal community platform serving jobs, real estate listings, and local news for a specific geographic area in India. Scaled to 50K+ users, 100K+ listings, bilingual support, and 99.2% uptime on a managed serverless stack.</p>
+            <div class="case-meta">
+                <span>Lead Developer</span>
+                <span>Next.js · Supabase · PostgreSQL · TypeScript</span>
+                <span>₹10,000 earned</span>
+                <span>Live</span>
+            </div>
+        </header>
+
+        <!-- â”€â”€ METRICS â”€â”€ -->
+        <div class="metrics-strip cs-block">
+            <div class="metric-pill"><strong>50K+</strong><span>Registered Users</span></div>
+            <div class="metric-pill"><strong>100K+</strong><span>Active Listings</span></div>
+            <div class="metric-pill"><strong>&lt;200ms</strong><span>Query Response</span></div>
+            <div class="metric-pill"><strong>99.2%</strong><span>Uptime</span></div>
+            <div class="metric-pill"><strong>Bilingual</strong><span>English + Hindi</span></div>
+            <div class="metric-pill"><strong>₹10K</strong><span>Revenue Earned</span></div>
+        </div>
+
+        <!-- â”€â”€ OVERVIEW â”€â”€ -->
+        <section class="case-content-section">
+            <h2>Overview</h2>
+            <p>NewMarket is a hyperlocal digital community hub covering three content verticals: <strong>job postings, real estate listings, and local news</strong>. It fills the gap between national platforms (too broad to feel local) and informal WhatsApp groups (no search, no structure, no history). The platform supports bilingual content in English and Hindi, anonymous community posting, nested threaded comments, and a role-based permission system enforced at the database layer.</p>
+            <p>The platform is built for daily active use, not occasional browsing. This shaped every technical decision toward speed, reliability, and mobile performance. All listing queries return in under 200ms at 100K+ rows. The platform has sustained 99.2% uptime since launch on a zero-ops managed infrastructure.</p>
+        </section>
+
+        <!-- â”€â”€ THE PROBLEM â”€â”€ -->
+        <section class="case-content-section">
+            <h2>The Problem</h2>
+            <p>Local communities in Tier 2 and Tier 3 Indian cities lack a structured digital presence. Job opportunities are shared informally in WhatsApp groups that are impossible to search or browse. Property listings are scattered across physical notice boards, regional papers, and unstructured chat threads. Local news either doesn't exist online or lives on slow, ad-saturated regional portals.</p>
+            <p>Any single vertical could be served by an existing national platform. But the hyperlocal value proposition (everything for this community in one place) required building all three together, making the platform a daily-use destination rather than an occasional utility.</p>
+            <div class="cs-highlight">
+                <strong>Scale constraint:</strong> The target audience uses mid-range Android devices on 4G connections. Every additional 100ms of query time is perceptible. The sub-200ms target wasn't a stretch goal. It was the performance floor for the platform to feel usable.
+            </div>
+        </section>
+
+        <!-- â”€â”€ DATABASE ARCHITECTURE â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Database Architecture</p>
+            <div class="project-cols">
+                <div>
+                    <div class="db-schema">
+                        <div class="db-table">
+                            <div class="db-table-head">users</div>
+                            <div class="db-table-body">
+                                <div class="db-field"><span class="pk">id · auth_id · role</span></div>
+                                <div class="db-field">display_name · locale</div>
+                                <div class="db-field">profile_data · created_at</div>
+                            </div>
+                        </div>
+                        <div class="db-table">
+                            <div class="db-table-head">listings</div>
+                            <div class="db-table-body">
+                                <div class="db-field"><span class="pk">id · type · user_id</span></div>
+                                <div class="db-field">title · body · location</div>
+                                <div class="db-field">status · locale · created_at</div>
+                            </div>
+                        </div>
+                        <div class="db-table">
+                            <div class="db-table-head">comments</div>
+                            <div class="db-table-body">
+                                <div class="db-field"><span class="pk">id</span> <span class="fk">listing_id · user_id</span></div>
+                                <div class="db-field"><span class="fk">parent_id</span> (nullable, nested)</div>
+                                <div class="db-field">body · is_anonymous</div>
+                            </div>
+                        </div>
+                        <div class="db-table">
+                            <div class="db-table-head">moderation</div>
+                            <div class="db-table-body">
+                                <div class="db-field"><span class="pk">id</span> <span class="fk">report_id · target_id</span></div>
+                                <div class="db-field">target_type · status · action</div>
+                                <div class="db-field">queue · reviewed_by</div>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--fg-3); margin-top: 1rem; letter-spacing: 0.04em; line-height: 1.7;">
+                        Composite index on (type, location, created_at) covers the primary browse query pattern.<br>
+                        Partial index WHERE status = 'active' reduces index size for the most common filter.
+                    </p>
+                </div>
+                <div>
+                    <p class="label">Key Design Decisions</p>
+                    <div class="challenges-list">
+                        <div class="challenge-item"><strong>Composite index strategy:</strong> (type, location, created_at) covers the dominant browse-by-type-and-location query, enabling sub-200ms response at 100K+ rows</div>
+                        <div class="challenge-item"><strong>Partial indexes:</strong> WHERE status = 'active' cuts index size by ~40% since most queries filter for active listings</div>
+                        <div class="challenge-item"><strong>parent_id for nested threads:</strong> recursive CTE queries retrieve full comment trees in a single round-trip, with depth capped at 5 levels</div>
+                        <div class="challenge-item"><strong>Supabase RLS at the database layer:</strong> access control enforced in PostgreSQL policies, not application code. No bypass is possible even if the API has a bug</div>
+                        <div class="challenge-item"><strong>Locale column per listing:</strong> single table supports English and Hindi content variations, served based on user preference or Accept-Language header</div>
+                    </div>
+
+                    <p class="label" style="margin-top: 2rem;">Deployment Stack</p>
+                    <div class="deploy-chain">
+                        <div class="deploy-layer">
+                            <span class="deploy-layer-label">Frontend</span>
+                            <div class="deploy-layer-tech"><span class="chip">Next.js App Router</span><span class="chip">Vercel Edge</span></div>
+                        </div>
+                        <div class="deploy-layer">
+                            <span class="deploy-layer-label">Auth</span>
+                            <div class="deploy-layer-tech"><span class="chip">Supabase Auth</span><span class="chip">JWT</span></div>
+                        </div>
+                        <div class="deploy-layer">
+                            <span class="deploy-layer-label">Backend</span>
+                            <div class="deploy-layer-tech"><span class="chip">Supabase Edge Functions</span></div>
+                        </div>
+                        <div class="deploy-layer">
+                            <span class="deploy-layer-label">Database</span>
+                            <div class="deploy-layer-tech"><span class="chip">PostgreSQL</span><span class="chip">RLS Policies</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- â”€â”€ TECHNICAL DEEP DIVE â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Technical Deep Dive</p>
+            <div class="deep-dive-grid">
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">Query Performance at 100K+ Rows</div>
+                        <span class="deep-item-tag">PostgreSQL Index Engineering</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>Unindexed queries on the listings table at 100K+ rows produced 800ms+ response times. The fix was composite index design: a multi-column index on <strong>(type, location, created_at)</strong> exactly matches the dominant browse query: filter by listing type (job/property/news), filter by location, sort by recency.</p>
+                        <p>A separate partial index <strong>WHERE status = 'active'</strong> reduces index size by ~40% and speeds up the most frequent user-facing query path, since browsing always filters for active listings. After index optimization, all primary browse queries returned consistently under 200ms even at full table scale. EXPLAIN ANALYZE confirmed sequential scans were eliminated on all hot query paths.</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">Role-Based Access Control</div>
+                        <span class="deep-item-tag">Supabase RLS Policies</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>Three user roles: <strong>anonymous viewer, authenticated user, and admin</strong>. Supabase Row Level Security policies enforce access control directly in PostgreSQL, not in application code. This means access guarantees hold even if the API layer has bugs or is bypassed.</p>
+                        <p>Key policies: authenticated users can only UPDATE listings WHERE user_id = auth.uid(); admins can SELECT from moderation WHERE role = 'admin'; anonymous users can SELECT active listings but cannot INSERT or UPDATE anything. Policies are tested via direct psql sessions impersonating each role, not just through the application flow.</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">Nested Comment Threads</div>
+                        <span class="deep-item-tag">Recursive CTE + Anonymous IDs</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>Comments use a nullable <strong>parent_id</strong> self-referential foreign key for nesting. A recursive CTE (WITH RECURSIVE) retrieves the full comment tree for a listing in a single database round-trip, eliminating N+1 comment fetching. Tree depth is capped at 5 levels via the recursion termination clause to prevent performance degradation on pathological threads.</p>
+                        <p>Anonymous posting uses deterministic per-thread identifiers: a one-way hash of (user_id + listing_id) produces a consistent short tag (e.g., "Anon#7f3a") that lets readers distinguish different anonymous posters in the same thread without any linkable identity across threads.</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">SEO for Hyperlocal Discoverability</div>
+                        <span class="deep-item-tag">Next.js SSR + ISR</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>Organic search was the primary user acquisition channel. All listing detail pages use Next.js <strong>server-side rendering</strong> with full structured metadata: Open Graph tags, JSON-LD schema (JobPosting, RealEstateListing) for rich search results, and canonical URLs with location-specific slugs (/jobs/city/title-slug) that match hyperlocal search intent exactly.</p>
+                        <p><strong>Incremental Static Regeneration (ISR)</strong> for listing category pages allows edge-cached responses for the most popular browse views while still revalidating on-demand when new listings appear. The combination of SSR detail pages and ISR browse pages gave the platform both search engine visibility and real-time freshness without choosing between them.</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">Community Moderation Pipeline</div>
+                        <span class="deep-item-tag">Report Queue + Admin Tooling</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>At 50K+ users, even a low percentage of bad actors produces a non-trivial absolute volume of harmful content. The moderation system uses a <strong>report queue</strong>: any authenticated user can flag any listing or comment, creating a moderation record with target_id, target_type, and reason. The admin dashboard surfaces reports sorted by report count and recency for manual review triage.</p>
+                        <p>Admin actions include: hide content (soft-delete from public view), permanent delete, warn user (automated message), and ban. Supabase Realtime pushes new reports to the admin dashboard in real-time, allowing faster response to high-severity content. The entire moderation state is audit-logged for accountability.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- â”€â”€ CHALLENGES SOLVED â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Challenges Solved</p>
+            <div class="challenges-list">
+                <div class="challenge-item"><strong>Sub-200ms at 100K+ listings</strong>: composite index on (type, location, created_at) plus partial index on active listings eliminated sequential scans on all primary query paths.</div>
+                <div class="challenge-item"><strong>Bilingual content delivery</strong>: locale-aware serving via Accept-Language header detection with per-user override, single table architecture for both language variants.</div>
+                <div class="challenge-item"><strong>Anonymous posting without abuse</strong>: deterministic per-thread anonymous identifiers with IP-rate limiting and report queue for post-hoc moderation.</div>
+                <div class="challenge-item"><strong>Nested thread retrieval without N+1</strong>: recursive CTE queries fetch full comment trees in one round-trip, depth-capped for performance safety.</div>
+                <div class="challenge-item"><strong>SEO for user-generated content at scale</strong>: SSR for listing detail pages with JSON-LD structured data, ISR for browse pages, automated sitemap from database queries.</div>
+                <div class="challenge-item"><strong>99.2% uptime on zero-ops infrastructure</strong>: fully managed Vercel + Supabase stack with no servers to maintain, monitor, or patch.</div>
+            </div>
+        </div>
+
+        <!-- â”€â”€ RESULTS â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Results</p>
+            <div class="result-grid">
+                <div class="result-item">
+                    <div class="result-value">50K+</div>
+                    <div class="result-label">Users</div>
+                    <div class="result-note">Organic growth via hyperlocal SEO</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value">100K+</div>
+                    <div class="result-label">Listings</div>
+                    <div class="result-note">Jobs, properties, and news</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value">&lt;200ms</div>
+                    <div class="result-label">Query Latency</div>
+                    <div class="result-note">At full table scale after index optimization</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value">99.2%</div>
+                    <div class="result-label">Uptime</div>
+                    <div class="result-note">Zero-ops managed infrastructure</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- â”€â”€ LESSONS LEARNED â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Lessons Learned</p>
+            <div class="lesson-grid">
+                <div class="lesson-card">
+                    <div class="lesson-num">01</div>
+                    <div class="lesson-title">Index design for query patterns, not individual columns</div>
+                    <div class="lesson-body">Single-column indexes barely moved the needle. The 200ms target required composite indexes precisely shaped to match the dominant query pattern: type + location + recency. Query plan analysis (EXPLAIN ANALYZE) was essential to verify the right index was being used.</div>
+                </div>
+                <div class="lesson-card">
+                    <div class="lesson-num">02</div>
+                    <div class="lesson-title">Supabase RLS belongs in the database, not the application</div>
+                    <div class="lesson-body">Enforcing access control at the PostgreSQL layer rather than the API layer gives guarantees that hold even under bugs, misconfiguration, or API bypass. Test RLS policies by direct psql impersonation of each role, not just through the app.</div>
+                </div>
+                <div class="lesson-card">
+                    <div class="lesson-num">03</div>
+                    <div class="lesson-title">SEO drove more growth than any product feature</div>
+                    <div class="lesson-body">The SSR + ISR investment for listing page crawlability compounded significantly over time. Location-specific URL structures made listings discoverable for hyperlocal search queries that national competitors weren't ranking for.</div>
+                </div>
+                <div class="lesson-card">
+                    <div class="lesson-num">04</div>
+                    <div class="lesson-title">Moderation infrastructure before scale, not after</div>
+                    <div class="lesson-body">Building the report queue and admin tooling before the platform went wide saved significant community damage. At 50K users, even a 0.1% bad actor rate is 50 accounts - enough to degrade trust quickly without proactive infrastructure in place.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cs-footer-nav">
+            <a href="index.html#projects" class="btn btn-ghost">← Back to Projects</a>
+        </div>
+
+    </main>
+
+    <footer id="contact">
+        <div class="footer-inner">
+            <p class="footer-statement">Let's build something exceptional.</p>
+            <div class="footer-links">
+                <a href="https://linkedin.com/in/yashita-mouli" class="footer-link">LinkedIn ↗</a>
+                <a href="https://github.com/yashitamoulin01-star" class="footer-link">GitHub ↗</a>
+                <a href="mailto:mouliyashita@gmail.com" class="footer-link">mouliyashita@gmail.com ↗</a>
+            </div>
+            <div class="footer-bottom">&copy; Yashita Mouli · B.Tech EXTC, NMIMS MPSTME · 2028</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

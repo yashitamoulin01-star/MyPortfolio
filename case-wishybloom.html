@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WishyBloom - Case Study</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" class="logo-text" style="text-decoration:none; color:inherit;">← Back to Home</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="case-study-header">
+            <h1 class="case-title">WishyBloom</h1>
+            <div class="case-meta">
+                <span>E-commerce Aggregation</span>
+                <span>Node.js • PostgreSQL • Puppeteer</span>
+            </div>
+        </header>
+
+        <section class="case-content-section">
+            <h2>The Challenge</h2>
+            <p>Plant enthusiasts face a highly fragmented market. Rare plants are sold across hundreds of boutique, independent Shopify stores, making inventory tracking and price comparison impossible. WishyBloom aggregates this data into a unified storefront.</p>
+        </section>
+
+        <section class="case-content-section">
+            <h2>System Architecture</h2>
+            <p>The aggregation engine is built on a distributed cluster of Node.js workers running Puppeteer and Cheerio. These workers systematically scrape partner sites on a cron schedule, normalizing varying schema data into a strict unified product model stored in PostgreSQL.</p>
+        </section>
+
+        <section class="case-content-section">
+            <h2>Business Impact</h2>
+            <p>WishyBloom scaled to 10k+ early active users, serving as the central hub for rare plant discovery. Our unified checkout flow drove a 40% conversion lift for our partner retail stores.</p>
+        </section>
+    </main>
+
+    <footer class="section">
+        <div class="container footer-bottom">
+            <p>&copy; Yashita Mouli. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
+

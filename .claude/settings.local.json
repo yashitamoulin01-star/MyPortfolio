@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($enc = [System.Text.Encoding]::UTF8; $text = [System.IO.File]::ReadAllText\\(\"D:\\\\portfolio\\\\case-neurosync.html\", $enc\\); $text | Select-String \"Three transformer\" | Select-Object -First 1)"
+    ]
+  }
+}

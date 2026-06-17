@@ -1,0 +1,846 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yashita Mouli | Full-Stack Developer · Software Engineer · AI Developer</title>
+    <meta name="description"
+        content="Full-Stack Developer, Software Engineer, and AI Developer. Building AI applications, software products, and scalable digital platforms.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ── Navbar ── -->
+    <nav class="navbar" id="navbar">
+        <span class="nav-logo">Yashita Mouli</span>
+        <ul class="nav-links">
+            <li><a href="#about" class="active">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#expertise">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="resume.pdf" download="Yashita_Mouli_Resume.pdf">Resume</a></li>
+        </ul>
+        <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+    <div class="mobile-nav" id="mobile-nav">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#expertise">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+        <a href="resume.pdf" download="Yashita_Mouli_Resume.pdf">Resume</a>
+    </div>
+
+    <!-- ══════════════════════════════════
+         HERO
+    ══════════════════════════════════ -->
+    <section class="hero" id="about">
+        <div class="container">
+            <div class="hero-split">
+                <div class="hero-inner">
+                    <h1 class="hero-title">Full-Stack Developer</h1>
+                    <p class="hero-role">Software Engineer &nbsp;&middot;&nbsp; AI Developer</p>
+                    <p class="hero-desc">
+                        Building AI applications, software products, and scalable digital platforms.
+                    </p>
+                    <div class="hero-about">
+                        <p>
+                            I'm pursuing a B.Tech in Electronics and Telecommunication Engineering at NMIMS MPSTME,
+                            Mumbai. My work spans AI, system design, full-stack engineering, and scalable web
+                            applications, covering frontend interfaces, backend services, ML pipelines, databases, and deployment infrastructure.
+                        </p>
+                    </div>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn btn-white">View Projects</a>
+                        <a href="https://github.com/yashitamoulin01-star" target="_blank" rel="noopener"
+                            class="btn btn-ghost">GitHub</a>
+                        <a href="resume.pdf" download="Yashita_Mouli_Resume.pdf" class="btn btn-ghost">Resume
+                            &#8595;</a>
+                    </div>
+                </div>
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-dot"></div>
+                        <div class="terminal-dot"></div>
+                        <div class="terminal-dot"></div>
+                        <span class="terminal-title">yashita@dev ~ %</span>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-line"><span class="t-prompt">$</span> <span class="highlight">load
+                                stack</span></div>
+                        <div class="terminal-line t-out">&gt; Python · PyTorch · Transformers</div>
+                        <div class="terminal-line t-out">&gt; TypeScript · Next.js · React</div>
+                        <div class="terminal-line t-out">&gt; FastAPI · WebSockets · REST</div>
+                        <div class="terminal-line t-out">&gt; PostgreSQL · Supabase · SQLite</div>
+                        <div class="terminal-line t-out">&gt; ONNX · MediaPipe · OpenCV</div>
+                        <div class="terminal-line t-out">&gt; Vercel · Cloudflare · Docker</div>
+                        <div class="terminal-line t-spacer"></div>
+                        <div class="terminal-line"><span class="t-prompt">$</span> <span class="highlight">status</span>
+                        </div>
+                        <div class="terminal-line t-out">&gt; <span class="t-green">Available for work</span></div>
+                        <div class="terminal-line"><span class="cursor"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         PROJECT GRID OVERVIEW
+    ══════════════════════════════════ -->
+    <section id="projects" class="section">
+        <div class="container">
+            <p class="label">Featured Projects</p>
+            <div class="projects-grid fade-in">
+                <div class="project-thumb" onclick="openProject('neurosync')">
+                    <span class="project-thumb-tag">Flagship · AI Systems</span>
+                    <span class="project-thumb-name">NeuroSync</span>
+                    <span class="project-thumb-desc">Real-time multimodal communication analysis powered by NAUNCE
+                        AI</span>
+                    <span class="project-thumb-stack">PyTorch · ViT · DeBERTa · FastAPI · Next.js</span>
+                </div>
+                <div class="project-thumb" onclick="openProject('newmarket')">
+                    <span class="project-thumb-tag">Marketplace · Community</span>
+                    <span class="project-thumb-name">NewMarket</span>
+                    <span class="project-thumb-desc">Hyperlocal community platform · 50K+ users · 100K+ listings</span>
+                    <span class="project-thumb-stack">Next.js · Supabase · PostgreSQL · TypeScript</span>
+                </div>
+                <div class="project-thumb" onclick="openProject('tbop')">
+                    <span class="project-thumb-tag">SaaS · Reputation</span>
+                    <span class="project-thumb-name">The Business of Professionals</span>
+                    <span class="project-thumb-desc">Professional reputation and trust platform</span>
+                    <span class="project-thumb-stack">Next.js · Supabase · Razorpay · Cloudflare</span>
+                </div>
+                <div class="project-thumb" onclick="openProject('fairbid')">
+                    <span class="project-thumb-tag">AI Marketplace · In Development</span>
+                    <span class="project-thumb-name">FairBid</span>
+                    <span class="project-thumb-desc">AI-powered freelance marketplace · ranks proposals by value, not
+                        price</span>
+                    <span class="project-thumb-stack">Next.js · FastAPI · PostgreSQL · LLMs · RAG</span>
+                </div>
+                <div class="project-thumb" onclick="openProject('silentdrift')">
+                    <span class="project-thumb-tag">ML · Hackathon</span>
+                    <span class="project-thumb-name">Silent Drift</span>
+                    <span class="project-thumb-desc">Environmental risk forecasting · 26-hour build</span>
+                    <span class="project-thumb-stack">Python · Scikit-learn · Streamlit · PyDeck</span>
+                </div>
+                <div class="project-thumb" onclick="openProject('focussense')">
+                    <span class="project-thumb-tag">CV · Productivity</span>
+                    <span class="project-thumb-name">FocusSense</span>
+                    <span class="project-thumb-desc">Client-side focus tracking via computer vision</span>
+                    <span class="project-thumb-stack">OpenCV · MediaPipe · FastAPI · Next.js</span>
+                </div>
+            </div>
+
+            <!-- ── Project Entries (expandable) ── -->
+
+            <!-- NEUROSYNC -->
+            <div class="project-entry" id="neurosync">
+                <div class="project-entry-header" onclick="toggleProject('neurosync')">
+                    <div>
+                        <div class="entry-name">NeuroSync</div>
+                        <div class="entry-tagline">Real-time multimodal communication analysis | Founder, Architect,
+                            Sole Developer | Active</div>
+                    </div>
+                    <span class="entry-toggle">+</span>
+                </div>
+                <div class="project-entry-body">
+
+                    <div class="metrics-strip">
+                        <div class="metric-pill"><strong>3</strong><span>Modalities</span></div>
+                        <div class="metric-pill"><strong>Sub-100ms</strong><span>Inference Latency</span></div>
+                        <div class="metric-pill"><strong>Cross-Attention</strong><span>Fusion Architecture</span></div>
+                        <div class="metric-pill"><strong>INT8</strong><span>Quantization</span></div>
+                        <div class="metric-pill"><strong>ONNX Runtime</strong><span>Inference Engine</span></div>
+                    </div>
+
+                    <div class="project-cols">
+                        <!-- Left: Architecture -->
+                        <div>
+                            <p class="label">System Architecture</p>
+                            <div class="arch-diagram">
+                                <div class="arch-node arch-highlight">
+                                    <div class="arch-node-title">Live A/V Stream</div>
+                                    <div class="arch-node-sub">Webcam + Mic · WebSocket</div>
+                                </div>
+                                <div class="arch-arrow">↓</div>
+                                <div class="arch-parallel">
+                                    <div class="arch-node">
+                                        <div class="arch-node-title">Vision Encoder</div>
+                                        <div class="arch-node-sub">ViT + MediaPipe</div>
+                                    </div>
+                                    <div class="arch-node">
+                                        <div class="arch-node-title">Voice Encoder</div>
+                                        <div class="arch-node-sub">AST + Whisper</div>
+                                    </div>
+                                    <div class="arch-node">
+                                        <div class="arch-node-title">Language Model</div>
+                                        <div class="arch-node-sub">DeBERTa</div>
+                                    </div>
+                                </div>
+                                <div class="arch-arrow">↓</div>
+                                <div class="arch-node arch-highlight">
+                                    <div class="arch-node-title">Cross-Attention Fusion</div>
+                                    <div class="arch-node-sub">Aligns vision · voice · text embeddings</div>
+                                </div>
+                                <div class="arch-arrow">↓</div>
+                                <div class="arch-node">
+                                    <div class="arch-node-title">ONNX Runtime (INT8)</div>
+                                    <div class="arch-node-sub">Quantized inference</div>
+                                </div>
+                                <div class="arch-arrow">↓</div>
+                                <div class="arch-node arch-highlight">
+                                    <div class="arch-node-title">Behavioral Scores</div>
+                                    <div class="arch-node-sub">Confidence · Engagement · Stress</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: Challenges + Stack -->
+                        <div>
+                            <p class="label">Challenges Solved</p>
+                            <div class="challenges-list">
+                                <div class="challenge-item">Real-time inference across 3 transformer models
+                                    simultaneously</div>
+                                <div class="challenge-item">Cross-modal embedding fusion with custom cross-attention
+                                    transformer</div>
+                                <div class="challenge-item">Latency reduction through ONNX Runtime + INT8 quantization
+                                </div>
+                                <div class="challenge-item">Behavioral signal alignment across async vision, voice, and
+                                    text streams</div>
+                                <div class="challenge-item">WebSocket bidirectional streaming for live A/V I/O</div>
+                            </div>
+
+                            <p class="label" style="margin-top: 2.5rem;">Deployment</p>
+                            <div class="deploy-chain">
+                                <div class="deploy-layer">
+                                    <span class="deploy-layer-label">Frontend</span>
+                                    <div class="deploy-layer-tech"><span class="chip">Next.js</span><span
+                                            class="chip">Vercel</span></div>
+                                </div>
+                                <div class="deploy-layer">
+                                    <span class="deploy-layer-label">Inference</span>
+                                    <div class="deploy-layer-tech"><span class="chip">FastAPI</span><span
+                                            class="chip">WebSockets</span><span class="chip">ONNX Runtime</span></div>
+                                </div>
+                                <div class="deploy-layer">
+                                    <span class="deploy-layer-label">Data</span>
+                                    <div class="deploy-layer-tech"><span class="chip">Supabase</span><span
+                                            class="chip">PostgreSQL</span></div>
+                                </div>
+                            </div>
+
+                            <p class="label" style="margin-top: 2.5rem;">Tech Stack</p>
+                            <div class="chip-row">
+                                <span class="chip">PyTorch</span><span class="chip">ViT</span><span
+                                    class="chip">AST</span>
+                                <span class="chip">DeBERTa</span><span class="chip">Whisper</span><span
+                                    class="chip">MediaPipe</span>
+                                <span class="chip">OpenCV</span><span class="chip">ONNX Runtime</span><span
+                                    class="chip">FastAPI</span>
+                                <span class="chip">WebSockets</span><span class="chip">Next.js</span><span
+                                    class="chip">Supabase</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:2rem;">
+                        <a href="case-neurosync.html" class="btn btn-ghost">Read Full Case Study →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEWMARKET -->
+            <div class="project-entry" id="newmarket">
+                <div class="project-entry-header" onclick="toggleProject('newmarket')">
+                    <div>
+                        <div class="entry-name">NewMarket.co.in</div>
+                        <div class="entry-tagline">Hyperlocal community platform · Lead Developer · ₹10,000 earned</div>
+                    </div>
+                    <span class="entry-toggle">+</span>
+                </div>
+                <div class="project-entry-body">
+
+                    <div class="screenshot-area screenshot-gradient-nm" id="nm-shot">
+                        <img src="img/newmarket.png" alt="NewMarket.co.in dashboard"
+                             style="width:100%;height:100%;object-fit:cover;object-position:top left;display:block;"
+                             onerror="this.style.display='none'; document.getElementById('nm-label').style.display='flex';">
+                        <span class="screenshot-label" id="nm-label" style="display:none;">Save screenshot → img/newmarket.png</span>
+                    </div>
+
+                    <div class="metrics-strip">
+                        <div class="metric-pill"><strong>50K+</strong><span>Users</span></div>
+                        <div class="metric-pill"><strong>100K+</strong><span>Listings</span></div>
+                        <div class="metric-pill"><strong>Sub-200ms</strong><span>Query Response</span></div>
+                        <div class="metric-pill"><strong>99.2%</strong><span>Uptime</span></div>
+                        <div class="metric-pill"><strong>Bilingual</strong><span>Platform</span></div>
+                    </div>
+
+                    <div class="project-cols">
+                        <!-- DB Schema -->
+                        <div>
+                            <p class="label">Database Architecture</p>
+                            <div class="db-schema">
+                                <div class="db-table">
+                                    <div class="db-table-head">users</div>
+                                    <div class="db-table-body">
+                                        <div class="db-field"><span class="pk">id, role, auth_id</span></div>
+                                        <div class="db-field">profile, locale</div>
+                                    </div>
+                                </div>
+                                <div class="db-table">
+                                    <div class="db-table-head">listings</div>
+                                    <div class="db-table-body">
+                                        <div class="db-field"><span class="pk">id, type, user_id</span></div>
+                                        <div class="db-field">jobs · properties · news</div>
+                                    </div>
+                                </div>
+                                <div class="db-table">
+                                    <div class="db-table-head">comments</div>
+                                    <div class="db-table-body">
+                                        <div class="db-field"><span class="pk">id</span> <span class="fk">listing_id,
+                                                user_id</span></div>
+                                        <div class="db-field">nested · anonymous</div>
+                                    </div>
+                                </div>
+                                <div class="db-table">
+                                    <div class="db-table-head">moderation</div>
+                                    <div class="db-table-body">
+                                        <div class="db-field"><span class="pk">id</span> <span
+                                                class="fk">report_id</span></div>
+                                        <div class="db-field">status · action · queue</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Challenges + Deploy -->
+                        <div>
+                            <p class="label">Challenges Solved</p>
+                            <div class="challenges-list">
+                                <div class="challenge-item">Schema normalization + indexing to hit sub-200ms at 100K+
+                                    listings</div>
+                                <div class="challenge-item">Role-based access control with JWT and Supabase RLS policies
+                                </div>
+                                <div class="challenge-item">Automated moderation pipeline with reporting queue</div>
+                                <div class="challenge-item">Nested comment threads with anonymous posting</div>
+                                <div class="challenge-item">SEO layer for hyperlocal discoverability</div>
+                            </div>
+
+                            <p class="label" style="margin-top:2.5rem;">Deployment</p>
+                            <div class="deploy-chain">
+                                <div class="deploy-layer">
+                                    <span class="deploy-layer-label">Frontend</span>
+                                    <div class="deploy-layer-tech"><span class="chip">Next.js + TS</span><span
+                                            class="chip">Vercel</span></div>
+                                </div>
+                                <div class="deploy-layer">
+                                    <span class="deploy-layer-label">Backend</span>
+                                    <div class="deploy-layer-tech"><span class="chip">Supabase Edge
+                                            Functions</span><span class="chip">JWT</span></div>
+                                </div>
+                                <div class="deploy-layer">
+                                    <span class="deploy-layer-label">Database</span>
+                                    <div class="deploy-layer-tech"><span class="chip">PostgreSQL</span><span
+                                            class="chip">Normalized + Indexed</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:2rem;">
+                        <a href="case-newmarket.html" class="btn btn-ghost">Read Full Case Study →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- THE BUSINESS OF PROFESSIONALS -->
+            <div class="project-entry" id="tbop">
+                <div class="project-entry-header" onclick="toggleProject('tbop')">
+                    <div>
+                        <div class="entry-name">The Business of Professionals</div>
+                        <div class="entry-tagline">Professional reputation platform · Lead Architect & Developer ·
+                            ₹50,000 project</div>
+                    </div>
+                    <span class="entry-toggle">+</span>
+                </div>
+                <div class="project-entry-body">
+
+                    <div class="metrics-strip">
+                        <div class="metric-pill"><strong>Multi-Tenant</strong><span>SaaS Architecture</span></div>
+                        <div class="metric-pill"><strong>RLS</strong><span>Row-Level Security</span></div>
+                        <div class="metric-pill"><strong>Zero-Downtime</strong><span>Deployment</span></div>
+                        <div class="metric-pill"><strong>Razorpay</strong><span>Payment Integration</span></div>
+                    </div>
+
+                    <div class="project-cols">
+                        <div>
+                            <p class="label">Deployment Architecture</p>
+                            <div class="arch-diagram">
+                                <div class="arch-node arch-highlight">
+                                    <div class="arch-node-title">Next.js Frontend</div>
+                                    <div class="arch-node-sub">App Router</div>
+                                </div>
+                                <div class="arch-arrow">↓</div>
+                                <div class="arch-node">
+                                    <div class="arch-node-title">Vercel</div>
+                                    <div class="arch-node-sub">Edge Network</div>
+                                </div>
+                                <div class="arch-arrow">↓</div>
+                                <div class="arch-node">
+                                    <div class="arch-node-title">Cloudflare</div>
+                                    <div class="arch-node-sub">DDoS · WAF · CDN</div>
+                                </div>
+                                <div class="arch-arrow">↓</div>
+                                <div class="arch-node arch-highlight">
+                                    <div class="arch-node-title">Supabase</div>
+                                    <div class="arch-node-sub">Auth + PostgreSQL + RLS</div>
+                                </div>
+                                <div class="arch-arrow">↓</div>
+                                <div class="arch-node">
+                                    <div class="arch-node-title">Razorpay</div>
+                                    <div class="arch-node-sub">Payment Gateway</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="label">Challenges Solved</p>
+                            <div class="challenges-list">
+                                <div class="challenge-item">Multi-tenant isolation with PostgreSQL Row Level Security
+                                </div>
+                                <div class="challenge-item">Peer rating system with fraud-resistant trust scoring
+                                    algorithm</div>
+                                <div class="challenge-item">Reputation analytics layer for recruiter discovery</div>
+                                <div class="challenge-item">Admin moderation dashboard with escalation workflows</div>
+                                <div class="challenge-item">Razorpay subscription billing with webhook-driven state sync
+                                </div>
+                            </div>
+                            <p class="label" style="margin-top:2.5rem;">Features</p>
+                            <div class="chip-row">
+                                <span class="chip">Verified Profiles</span><span class="chip">Peer Ratings</span>
+                                <span class="chip">Trust Scoring</span><span class="chip">Recruiter Dashboard</span>
+                                <span class="chip">Reputation Analytics</span><span class="chip">Admin Moderation</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:2rem;">
+                        <a href="case-tbop.html" class="btn btn-ghost">Read Full Case Study →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAIRBID -->
+            <div class="project-entry" id="fairbid">
+                <div class="project-entry-header" onclick="toggleProject('fairbid')">
+                    <div>
+                        <div class="entry-name">FairBid <span
+                                style="font-size:0.75rem; color: var(--fg-3); font-family: var(--font-mono); font-weight:400; margin-left:0.75rem;">Architecture
+                                & validation phase</span></div>
+                        <div class="entry-tagline">AI-powered freelance marketplace · Founder & Product Architect</div>
+                    </div>
+                    <span class="entry-toggle">+</span>
+                </div>
+                <div class="project-entry-body">
+                    <div class="metrics-strip">
+                        <div class="metric-pill"><strong>LLM</strong><span>Proposal Evaluation</span></div>
+                        <div class="metric-pill"><strong>RAG</strong><span>Retrieval Augmented</span></div>
+                        <div class="metric-pill"><strong>Vector Search</strong><span>Semantic Matching</span></div>
+                        <div class="metric-pill"><strong>Trust Layer</strong><span>Reputation Engine</span></div>
+                    </div>
+                    <div class="project-cols">
+                        <div>
+                            <p class="label">AI Pipeline</p>
+                            <div class="arch-diagram">
+                                <div class="arch-node">
+                                    <div class="arch-node-title">Freelance Proposal Input</div>
+                                    <div class="arch-node-sub">Scope · Timeline · Price</div>
+                                </div>
+                                <div class="arch-arrow">↓</div>
+                                <div class="arch-node arch-highlight">
+                                    <div class="arch-node-title">LLM Evaluation Engine</div>
+                                    <div class="arch-node-sub">Technical depth · Feasibility · Risk scoring</div>
+                                </div>
+                                <div class="arch-arrow">↓</div>
+                                <div class="arch-node">
+                                    <div class="arch-node-title">RAG + Vector Search</div>
+                                    <div class="arch-node-sub">Historical grounding · Semantic retrieval</div>
+                                </div>
+                                <div class="arch-arrow">↓</div>
+                                <div class="arch-node arch-highlight">
+                                    <div class="arch-node-title">Value Score Output</div>
+                                    <div class="arch-node-sub">Ranked by quality, not price</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="label">Technology Direction</p>
+                            <div class="chip-row">
+                                <span class="chip">Next.js</span><span class="chip">FastAPI</span>
+                                <span class="chip">PostgreSQL</span><span class="chip">Supabase</span>
+                                <span class="chip">Vector Search</span><span class="chip">RAG</span>
+                                <span class="chip">LLMs</span><span class="chip">AI Agents</span>
+                            </div>
+                            <p style="color: var(--fg-3); font-size: 0.875rem; margin-top:1.5rem; font-style: italic;">
+                                The architecture, marketplace workflows, AI evaluation pipeline, trust layer, and
+                                proposal-analysis engine have been designed. Full production platform not yet deployed.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SILENT DRIFT -->
+            <div class="project-entry" id="silentdrift">
+                <div class="project-entry-header" onclick="toggleProject('silentdrift')">
+                    <div>
+                        <div class="entry-name">Silent Drift</div>
+                        <div class="entry-tagline">Environmental risk forecasting · 26-hour hackathon build</div>
+                    </div>
+                    <span class="entry-toggle">+</span>
+                </div>
+                <div class="project-entry-body">
+                    <div class="metrics-strip">
+                        <div class="metric-pill"><strong>26h</strong><span>Build Time</span></div>
+                        <div class="metric-pill"><strong>IRI</strong><span>Intrusion Risk Index</span></div>
+                        <div class="metric-pill"><strong>3D Maps</strong><span>PyDeck Visualization</span></div>
+                        <div class="metric-pill"><strong>Auto</strong><span>Policy Report Gen</span></div>
+                    </div>
+                    <div class="project-cols">
+                        <div>
+                            <p class="label">Challenges Solved</p>
+                            <div class="challenges-list">
+                                <div class="challenge-item">ML model for groundwater salinity intrusion prediction</div>
+                                <div class="challenge-item">Intrusion Risk Index (IRI) metric design and calibration
+                                </div>
+                                <div class="challenge-item">3D geospatial risk visualization with PyDeck</div>
+                                <div class="challenge-item">Automated policy report generation via ReportLab</div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="label">Stack</p>
+                            <div class="chip-row">
+                                <span class="chip">Python</span><span class="chip">Pandas</span>
+                                <span class="chip">Scikit-learn</span><span class="chip">Plotly</span>
+                                <span class="chip">PyDeck</span><span class="chip">ReportLab</span>
+                                <span class="chip">Streamlit</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:2rem;">
+                        <a href="case-silentdrift.html" class="btn btn-ghost">Read Full Case Study →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOCUSSENSE -->
+            <div class="project-entry" id="focussense">
+                <div class="project-entry-header" onclick="toggleProject('focussense')">
+                    <div>
+                        <div class="entry-name">FocusSense</div>
+                        <div class="entry-tagline">Productivity intelligence platform · Client-side privacy-first</div>
+                    </div>
+                    <span class="entry-toggle">+</span>
+                </div>
+                <div class="project-entry-body">
+                    <div class="metrics-strip">
+                        <div class="metric-pill"><strong>100%</strong><span>Client-Side Processing</span></div>
+                        <div class="metric-pill"><strong>Zero</strong><span>Data Sent to Server</span></div>
+                        <div class="metric-pill"><strong>CV-based</strong><span>Focus Tracking</span></div>
+                    </div>
+                    <div class="project-cols">
+                        <div>
+                            <p class="label">Challenges Solved</p>
+                            <div class="challenges-list">
+                                <div class="challenge-item">On-device computer vision via OpenCV and MediaPipe with no
+                                    server calls</div>
+                                <div class="challenge-item">Head pose and eye tracking for real-time focus state
+                                    inference</div>
+                                <div class="challenge-item">Explainable focus scoring with distraction pattern analysis
+                                </div>
+                                <div class="challenge-item">SQLite-backed session history for longitudinal analytics
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="label">Stack</p>
+                            <div class="chip-row">
+                                <span class="chip">Python</span><span class="chip">FastAPI</span>
+                                <span class="chip">SQLite</span><span class="chip">OpenCV</span>
+                                <span class="chip">MediaPipe</span><span class="chip">Pandas</span>
+                                <span class="chip">Next.js</span><span class="chip">TypeScript</span>
+                                <span class="chip">Tailwind CSS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:2rem;">
+                        <a href="case-focussense.html" class="btn btn-ghost">Read Full Case Study →</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════
+         EXPERTISE
+    ══════════════════════════════════ -->
+    <section id="expertise" class="section">
+        <div class="container">
+            <p class="label">Technical Expertise</p>
+            <div class="skills-grid fade-in">
+                <div class="skill-group">
+                    <span class="skill-group-label">Languages</span>
+                    <div class="chip-row">
+                        <span class="chip">Python</span>
+                        <span class="chip">TypeScript</span>
+                        <span class="chip">SQL</span>
+                        <span class="chip">C++</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <span class="skill-group-label">Frontend</span>
+                    <div class="chip-row">
+                        <span class="chip">Next.js</span>
+                        <span class="chip">React</span>
+                        <span class="chip">Tailwind CSS</span>
+                        <span class="chip">Framer Motion</span>
+                        <span class="chip">JavaScript</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <span class="skill-group-label">Backend</span>
+                    <div class="chip-row">
+                        <span class="chip">FastAPI</span>
+                        <span class="chip">REST APIs</span>
+                        <span class="chip">WebSockets</span>
+                        <span class="chip">JWT Auth</span>
+                        <span class="chip">SQLAlchemy</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <span class="skill-group-label">AI / ML</span>
+                    <div class="chip-row">
+                        <span class="chip">PyTorch</span>
+                        <span class="chip">Transformers</span>
+                        <span class="chip">ViT</span>
+                        <span class="chip">AST</span>
+                        <span class="chip">DeBERTa</span>
+                        <span class="chip">Whisper</span>
+                        <span class="chip">MediaPipe</span>
+                        <span class="chip">OpenCV</span>
+                        <span class="chip">ONNX Runtime</span>
+                        <span class="chip">Scikit-learn</span>
+                        <span class="chip">XGBoost</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <span class="skill-group-label">Databases</span>
+                    <div class="chip-row">
+                        <span class="chip">PostgreSQL</span>
+                        <span class="chip">Supabase</span>
+                        <span class="chip">MySQL</span>
+                        <span class="chip">SQLite</span>
+                        <span class="chip">Query Optimization</span>
+                        <span class="chip">Normalization</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <span class="skill-group-label">Cloud / DevOps</span>
+                    <div class="chip-row">
+                        <span class="chip">Vercel</span>
+                        <span class="chip">Render</span>
+                        <span class="chip">Cloudflare</span>
+                        <span class="chip">GitHub Actions</span>
+                        <span class="chip">Docker</span>
+                        <span class="chip">Git</span>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider" style="margin: 5rem 0;">
+
+            <!-- What I Build -->
+            <p class="label">What I Build</p>
+            <div class="build-list fade-in">
+                <div class="build-item">AI Systems</div>
+                <div class="build-item">SaaS Platforms</div>
+                <div class="build-item">Marketplace Applications</div>
+                <div class="build-item">Analytics Platforms</div>
+                <div class="build-item">Automation Tools</div>
+                <div class="build-item">Internal Business Software</div>
+                <div class="build-item">Full Stack Applications</div>
+            </div>
+
+            <hr class="divider" style="margin: 5rem 0;">
+
+            <!-- Current Focus -->
+            <p class="label">Current Focus</p>
+            <div class="focus-tags fade-in">
+                <span class="focus-tag">Multimodal AI Systems</span>
+                <span class="focus-tag">Behavioral Intelligence</span>
+                <span class="focus-tag">Agentic Workflows</span>
+                <span class="focus-tag">Scalable SaaS Architectures</span>
+                <span class="focus-tag">AI-Powered Decision Systems</span>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════
+         FEATURED REPOSITORIES
+    ══════════════════════════════════ -->
+    <section class="section-sm">
+        <div class="container">
+            <p class="label">Featured Repositories</p>
+            <div class="repo-grid fade-in">
+                <a href="https://github.com/yashitamoulin01-star" target="_blank" rel="noopener" class="repo-card">
+                    <div class="repo-card-top">
+                        <span class="repo-name">NeuroSync / NuanceAI</span>
+                        <span class="repo-arrow">↗</span>
+                    </div>
+                    <p class="repo-desc">Multimodal AI behavioral intelligence engine</p>
+                    <span class="repo-lang">Python · PyTorch · FastAPI</span>
+                </a>
+                <a href="https://github.com/yashitamoulin01-star" target="_blank" rel="noopener" class="repo-card">
+                    <div class="repo-card-top">
+                        <span class="repo-name">NewMarket</span>
+                        <span class="repo-arrow">↗</span>
+                    </div>
+                    <p class="repo-desc">Hyperlocal community ecosystem platform</p>
+                    <span class="repo-lang">TypeScript · Next.js · PostgreSQL</span>
+                </a>
+                <a href="https://github.com/yashitamoulin01-star" target="_blank" rel="noopener" class="repo-card">
+                    <div class="repo-card-top">
+                        <span class="repo-name">FocusSense</span>
+                        <span class="repo-arrow">↗</span>
+                    </div>
+                    <p class="repo-desc">Productivity analytics and focus tracking</p>
+                    <span class="repo-lang">Python · OpenCV · MediaPipe</span>
+                </a>
+                <a href="https://github.com/yashitamoulin01-star" target="_blank" rel="noopener" class="repo-card">
+                    <div class="repo-card-top">
+                        <span class="repo-name">ToxiScanAI</span>
+                        <span class="repo-arrow">↗</span>
+                    </div>
+                    <p class="repo-desc">Drug toxicity prediction system</p>
+                    <span class="repo-lang">Python · Scikit-learn · FastAPI</span>
+                </a>
+                <a href="https://github.com/yashitamoulin01-star" target="_blank" rel="noopener" class="repo-card">
+                    <div class="repo-card-top">
+                        <span class="repo-name">Silent Drift</span>
+                        <span class="repo-arrow">↗</span>
+                    </div>
+                    <p class="repo-desc">Groundwater intrusion intelligence platform</p>
+                    <span class="repo-lang">Python · Scikit-learn · PyDeck</span>
+                </a>
+                <a href="https://github.com/yashitamoulin01-star" target="_blank" rel="noopener" class="repo-card">
+                    <div class="repo-card-top">
+                        <span class="repo-name">Speech Recognition</span>
+                        <span class="repo-arrow">↗</span>
+                    </div>
+                    <p class="repo-desc">DSP-based yes/no speech recognition system</p>
+                    <span class="repo-lang">Python · DSP · NLP</span>
+                </a>
+            </div>
+            <div style="margin-top: 2rem;">
+                <a href="https://github.com/yashitamoulin01-star" target="_blank" rel="noopener"
+                    class="btn btn-ghost">github.com/yashitamoulin01-star ↗</a>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- ══════════════════════════════════
+         EXPERIENCE
+    ══════════════════════════════════ -->
+    <section id="experience" class="section-sm">
+        <div class="container">
+            <p class="label">Leadership & Organizations</p>
+            <div class="leadership-grid fade-in">
+                <div class="leadership-card">
+                    <div class="leadership-date">2025 – Present</div>
+                    <div class="leadership-title">Technical Member</div>
+                    <div class="leadership-org">Darvin Robotics · IGVC Team</div>
+                </div>
+                <div class="leadership-card">
+                    <div class="leadership-date">2024 – 2025</div>
+                    <div class="leadership-title">Executive</div>
+                    <div class="leadership-org">IET MPSTME · Student Member Development</div>
+                </div>
+                <div class="leadership-card">
+                    <div class="leadership-date">2024 – 2025</div>
+                    <div class="leadership-title">Junior Manager</div>
+                    <div class="leadership-org">AIESEC · Business Development</div>
+                </div>
+                <div class="leadership-card">
+                    <div class="leadership-date">2025</div>
+                    <div class="leadership-title">Volunteer</div>
+                    <div class="leadership-org">Drishti Foundation</div>
+                </div>
+            </div>
+
+            <hr class="divider" style="margin: 4rem 0;">
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+                <div>
+                    <p class="label">Hackathons</p>
+                    <div class="tag-cloud fade-in">
+                        <span class="tag-item">ETHDenver 2026</span>
+                        <span class="tag-item">DU Hacks 5.0</span>
+                        <span class="tag-item">CODECURE AI</span>
+                        <span class="tag-item">Google Build With AI</span>
+                        <span class="tag-item">UIDAI Data Hackathon</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="label">Languages</p>
+                    <div class="tag-cloud fade-in">
+                        <span class="tag-item">English</span>
+                        <span class="tag-item">Hindi</span>
+                        <span class="tag-item">Punjabi</span>
+                    </div>
+                    <p class="label" style="margin-top:2rem;">Education</p>
+                    <p style="color: var(--fg-2); font-size: 0.9375rem; line-height:1.8;">
+                        B.Tech Electronics &amp; Telecommunication Engineering (EXTC)<br>
+                        <span style="color: var(--fg-3); font-family: var(--font-mono); font-size: 0.8rem;">NMIMS
+                            MPSTME, Mumbai · Expected 2028</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════
+         FOOTER / CONTACT
+    ══════════════════════════════════ -->
+    <footer id="contact">
+        <div class="footer-inner">
+            <p class="footer-statement">Let's build something exceptional.</p>
+            <div class="footer-links">
+                <a href="https://linkedin.com/in/yashita-mouli" class="footer-link">LinkedIn ↗</a>
+                <a href="https://github.com/yashitamoulin01-star" class="footer-link">GitHub ↗</a>
+                <a href="mailto:mouliyashita@gmail.com" class="footer-link">mouliyashita@gmail.com ↗</a>
+                <a href="tel:+919319355328" class="footer-link">+91 93193 55328</a>
+            </div>
+            <div class="footer-bottom">
+                &copy; Yashita Mouli | B.Tech EXTC, NMIMS MPSTME | 2028
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

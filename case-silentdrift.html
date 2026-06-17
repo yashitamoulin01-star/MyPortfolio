@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silent Drift: Case Study | Yashita Mouli</title>
+    <meta name="description" content="Silent Drift, a groundwater salinity intrusion forecasting tool with custom IRI metric, ML prediction, and 3D geospatial visualization. Built in 26 hours.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <span class="nav-logo">Yashita Mouli</span>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+
+        <!-- â”€â”€ HEADER â”€â”€ -->
+        <header class="case-study-header">
+            <p class="label">ML · Environmental Intelligence · Hackathon</p>
+            <h1 class="case-title">Silent Drift</h1>
+            <p class="cs-tagline">Groundwater salinity intrusion forecasting with a custom Intrusion Risk Index (IRI), ML prediction pipeline, and 3D geospatial risk visualization. Designed, built, and demo-ready in 26 hours.</p>
+            <div class="case-meta">
+                <span>Sole Developer</span>
+                <span>Python · Scikit-learn · PyDeck · Streamlit</span>
+                <span>26-hour hackathon build</span>
+                <span>DU Hacks 5.0</span>
+            </div>
+        </header>
+
+        <!-- â”€â”€ METRICS â”€â”€ -->
+        <div class="metrics-strip cs-block">
+            <div class="metric-pill"><strong>26h</strong><span>Build Time</span></div>
+            <div class="metric-pill"><strong>IRI</strong><span>Custom Risk Index</span></div>
+            <div class="metric-pill"><strong>3D Maps</strong><span>PyDeck Hex Visualization</span></div>
+            <div class="metric-pill"><strong>Auto</strong><span>Policy Report Generation</span></div>
+            <div class="metric-pill"><strong>ML</strong><span>Salinity Prediction Model</span></div>
+            <div class="metric-pill"><strong>Streamlit</strong><span>Interactive Dashboard</span></div>
+        </div>
+
+        <!-- â”€â”€ OVERVIEW â”€â”€ -->
+        <section class="case-content-section">
+            <h2>Overview</h2>
+            <p>Silent Drift is an environmental risk intelligence platform that predicts groundwater salinity intrusion risk across coastal and drought-affected areas. The system ingests groundwater chemistry data (pH, TDS, EC, ion concentrations), runs a machine learning prediction pipeline, computes an <strong>Intrusion Risk Index (IRI)</strong> for each geographic area, renders a 3D risk map, and auto-generates a structured PDF policy report with findings and recommendations.</p>
+            <p>The project was built from ideation to working demo in 26 hours at DU Hacks 5.0. The core insight was that the IRI metric design (a domain-informed composite score) was more valuable than just training another generic ML model on raw features.</p>
+        </section>
+
+        <!-- â”€â”€ THE PROBLEM â”€â”€ -->
+        <section class="case-content-section">
+            <h2>The Problem</h2>
+            <p>Coastal aquifer salinization is a slow, invisible environmental crisis. Seawater intrudes into freshwater aquifers over years, contaminating drinking water, killing agricultural soil, and rendering wells unusable, often before communities notice the change. The problem is particularly acute in coastal India, where over-extraction of groundwater accelerates intrusion.</p>
+            <p>Existing monitoring approaches produce raw chemical readings that are difficult for non-scientists to interpret. A policymaker seeing "TDS: 1,200 mg/L, EC: 2.1 mS/cm, Na+: 450 mg/L" cannot easily determine whether their district's groundwater is approaching crisis levels. The gap is not data. It's interpretation and visualization.</p>
+            <div class="cs-highlight">
+                <strong>Design insight:</strong> The most impactful engineering decision wasn't the ML model choice. It was designing the IRI metric. A domain-grounded composite score that non-technical policymakers could understand and act on was the real product. The ML model served the metric, not the other way around.
+            </div>
+        </section>
+
+        <!-- â”€â”€ ML PIPELINE ARCHITECTURE â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">ML Pipeline Architecture</p>
+            <div class="project-cols">
+                <div>
+                    <div class="arch-diagram">
+                        <div class="arch-node">
+                            <div class="arch-node-title">Raw Groundwater Data</div>
+                            <div class="arch-node-sub">pH · TDS · EC · Na+ · Cl- · SAR · location</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-node">
+                            <div class="arch-node-title">Feature Engineering</div>
+                            <div class="arch-node-sub">Spatial features · temporal trends · ion ratios</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-node arch-highlight">
+                            <div class="arch-node-title">IRI Metric Computation</div>
+                            <div class="arch-node-sub">Normalized composite score per location</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-node">
+                            <div class="arch-node-title">ML Prediction Model</div>
+                            <div class="arch-node-sub">Scikit-learn · Random Forest + XGBoost</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-parallel">
+                            <div class="arch-node arch-highlight">
+                                <div class="arch-node-title">3D Risk Map</div>
+                                <div class="arch-node-sub">PyDeck hexagons</div>
+                            </div>
+                            <div class="arch-node arch-highlight">
+                                <div class="arch-node-title">Policy PDF</div>
+                                <div class="arch-node-sub">ReportLab auto-gen</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="label">IRI Metric Components</p>
+                    <div class="challenges-list">
+                        <div class="challenge-item"><strong>Salinity Index (SI):</strong> TDS and EC normalized against WHO drinking water thresholds; weighted 35% of IRI</div>
+                        <div class="challenge-item"><strong>Sodium Adsorption Ratio (SAR):</strong> measures soil-damaging sodium relative to calcium and magnesium; weighted 25%</div>
+                        <div class="challenge-item"><strong>Chloride-Bicarbonate Ratio (CBR):</strong> elevated Cl-/HCO3- indicates seawater mixing; weighted 25%</div>
+                        <div class="challenge-item"><strong>pH Deviation:</strong> acidification pattern indicating aquifer stress; weighted 15%</div>
+                    </div>
+
+                    <p class="label" style="margin-top: 2rem;">IRI Risk Classification</p>
+                    <div class="metrics-strip" style="margin: 0.75rem 0 0; border: 1px solid var(--border);">
+                        <div class="metric-pill"><strong style="color: #27c93f;">0-25</strong><span>Safe</span></div>
+                        <div class="metric-pill"><strong style="color: #ffbd2e;">26-50</strong><span>Moderate</span></div>
+                        <div class="metric-pill"><strong style="color: #ff8c00;">51-75</strong><span>High Risk</span></div>
+                        <div class="metric-pill"><strong style="color: #ff5f56;">76-100</strong><span>Critical</span></div>
+                    </div>
+
+                    <p class="label" style="margin-top: 2rem;">Tech Stack</p>
+                    <div class="chip-row">
+                        <span class="chip">Python</span><span class="chip">Pandas</span>
+                        <span class="chip">Scikit-learn</span><span class="chip">XGBoost</span>
+                        <span class="chip">NumPy</span><span class="chip">Plotly</span>
+                        <span class="chip">PyDeck</span><span class="chip">ReportLab</span>
+                        <span class="chip">Streamlit</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- â”€â”€ TECHNICAL DEEP DIVE â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Technical Deep Dive</p>
+            <div class="deep-dive-grid">
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">IRI Metric Design</div>
+                        <span class="deep-item-tag">Domain-Informed Feature Engineering</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>The Intrusion Risk Index is a normalized composite score (0-100) that translates raw groundwater chemistry into a single interpretable risk number. Each component is normalized against established WHO and BIS (Bureau of Indian Standards) thresholds for drinking water quality, then combined with empirically chosen weights that reflect the relative importance of each indicator for salinity intrusion specifically.</p>
+                        <p>The design process started from domain knowledge first: reading groundwater chemistry literature to understand which chemical signatures are diagnostic of seawater intrusion versus other contamination types. This top-down approach (define what to measure, then measure it) produced a metric that domain experts found meaningful on first review, rather than a black-box ML output that required explanation.</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">ML Prediction Pipeline</div>
+                        <span class="deep-item-tag">Scikit-learn + XGBoost Ensemble</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>The ML model predicts IRI values for locations where direct measurements are sparse, enabling risk interpolation across geographic areas. Features include: raw chemistry readings, computed ion ratios, geographic coordinates, proximity to coast, and historical trend features (rate of change in key indicators over time).</p>
+                        <p>A Random Forest and XGBoost ensemble was chosen for its robustness to the feature distribution typical of small environmental datasets (non-normal, outlier-heavy, correlated features). The ensemble outperformed either model alone in cross-validation on the holdout set. Feature importance analysis confirmed that EC and Cl-/HCO3- ratio were the most predictive features, consistent with domain expectations.</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">3D Geospatial Risk Visualization</div>
+                        <span class="deep-item-tag">PyDeck Hexagon Layer</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p><strong>PyDeck</strong> (Python bindings for deck.gl) renders a 3D hexagonal bin map where each hexagon's height and color represent the IRI for that geographic cell. Higher hexagons and warmer colors indicate higher intrusion risk, making the visualization immediately interpretable by policymakers without data science training.</p>
+                        <p>The hexagonal binning approach handles sparse, unevenly distributed sample points by aggregating nearby measurements into geographic cells rather than plotting individual point markers. This prevents the map from becoming visually misleading in data-sparse regions. Color scale uses a perceptually uniform green-to-red gradient with explicit midpoints for Moderate and High Risk thresholds.</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">Automated Policy Report Generation</div>
+                        <span class="deep-item-tag">ReportLab PDF</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>The most underestimated part of the system: an automated PDF policy report generated by <strong>ReportLab</strong> that reads like a government briefing document rather than a data export. The report includes: executive summary with critical-zone count, district-level risk table, top 10 highest-risk locations with IRI scores and recommended interventions, methodology section, and data quality notes.</p>
+                        <p>Report generation is template-driven: structured report sections are populated from the prediction pipeline's output objects. Conditional language ("The following districts require immediate intervention" vs. "Monitoring recommended for the following districts") is selected based on IRI classification thresholds. The goal was for the report to be signable by a water board official without editing. The AI writes the first draft and humans review and act.</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">26-Hour Build Strategy</div>
+                        <span class="deep-item-tag">Hackathon Execution</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>The 26-hour constraint required brutal prioritization. Hours 1-3: domain research and IRI metric design (the highest-leverage decision). Hours 3-8: data ingestion, feature engineering, IRI computation, and baseline ML model. Hours 8-14: PyDeck visualization and Streamlit dashboard integration. Hours 14-20: ReportLab PDF generation and report template writing. Hours 20-24: integration testing, edge case handling, and demo polish. Hours 24-26: presentation preparation.</p>
+                        <p>The key constraint insight: never attempt a broad problem partially. Choosing "groundwater salinity intrusion" specifically, rather than "water quality" generally, allowed a complete, defensible solution with a coherent narrative. Judges saw a finished system solving a specific problem, not a prototype gesture at a large one.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- â”€â”€ CHALLENGES SOLVED â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Challenges Solved</p>
+            <div class="challenges-list">
+                <div class="challenge-item"><strong>IRI metric design from scratch under time pressure</strong>: spending 3 hours on domain research before writing any code produced a more defensible and useful metric than iterating on a generic feature set.</div>
+                <div class="challenge-item"><strong>Sparse, unevenly distributed sample data</strong>: hexagonal binning in PyDeck handles geospatial sparsity without misleading point-density artifacts; ML interpolation fills gaps in measurement coverage.</div>
+                <div class="challenge-item"><strong>Policy-readable automated reports</strong>: ReportLab template with conditional language selection produces documents indistinguishable from manually written briefings for the identified risk tiers.</div>
+                <div class="challenge-item"><strong>3D visualization performance with large datasets</strong>: deck.gl's WebGL rendering handles thousands of hexagonal bins smoothly; data aggregation into hex bins before rendering prevents GPU overload.</div>
+                <div class="challenge-item"><strong>Multivariate normalization across different units</strong>: each IRI component uses its own normalization function (min-max against WHO thresholds) before combination to prevent unit-scale dominance of any single indicator.</div>
+            </div>
+        </div>
+
+        <!-- â”€â”€ RESULTS â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Results</p>
+            <div class="result-grid">
+                <div class="result-item">
+                    <div class="result-value">26h</div>
+                    <div class="result-label">Build Time</div>
+                    <div class="result-note">From ideation to working demo with full pipeline</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value">IRI</div>
+                    <div class="result-label">Original Metric</div>
+                    <div class="result-note">Domain-informed composite risk score designed from scratch</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value">3D</div>
+                    <div class="result-label">Risk Visualization</div>
+                    <div class="result-note">PyDeck hex map interpretable without data science background</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value">Auto</div>
+                    <div class="result-label">Policy Reports</div>
+                    <div class="result-note">ReportLab PDF with conditional policy language</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- â”€â”€ LESSONS LEARNED â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Lessons Learned</p>
+            <div class="lesson-grid">
+                <div class="lesson-card">
+                    <div class="lesson-num">01</div>
+                    <div class="lesson-title">Metric design is higher-leverage than model selection</div>
+                    <div class="lesson-body">A domain-informed composite metric (IRI) that stakeholders can understand and act on is more valuable than a slightly better-performing black-box model. Spending 3 hours on domain research before touching code produced a more impactful system than 3 extra hours of hyperparameter tuning would have.</div>
+                </div>
+                <div class="lesson-card">
+                    <div class="lesson-num">02</div>
+                    <div class="lesson-title">3D geospatial visualization makes risk data accessible to decision-makers</div>
+                    <div class="lesson-body">Showing a water board official a table of TDS readings vs. showing them a 3D map where red spikes indicate critical areas is the difference between data that informs and data that drives action. The visualization layer was not cosmetic - it was the product.</div>
+                </div>
+                <div class="lesson-card">
+                    <div class="lesson-num">03</div>
+                    <div class="lesson-title">Automated reports are a force multiplier for policy impact</div>
+                    <div class="lesson-body">A system that produces numbers is useful to data scientists. A system that produces a signable briefing document is useful to decision-makers who control budgets. The ReportLab PDF was the feature that turned a data analysis tool into a policy tool.</div>
+                </div>
+                <div class="lesson-card">
+                    <div class="lesson-num">04</div>
+                    <div class="lesson-title">Narrow problems beaten completely outperform broad problems beaten partially</div>
+                    <div class="lesson-body">Under time pressure, specificity wins. "Groundwater salinity intrusion" with a complete pipeline is more compelling than "water quality" with three disconnected visualizations. Judges and users both respond to depth over breadth.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- â”€â”€ FUTURE ROADMAP â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Future Roadmap</p>
+            <div class="roadmap-list">
+                <div class="roadmap-item">
+                    <span class="roadmap-phase">Phase 1</span>
+                    <div class="roadmap-text"><strong>Real-time sensor integration</strong>: connect to IoT groundwater monitoring stations for live data ingestion rather than static dataset uploads, enabling continuous IRI updates.</div>
+                </div>
+                <div class="roadmap-item">
+                    <span class="roadmap-phase">Phase 2</span>
+                    <div class="roadmap-text"><strong>Multi-contaminant expansion</strong>: extend the IRI framework to arsenic contamination, fluoride levels, and nitrate pollution, each with their own domain-calibrated index components.</div>
+                </div>
+                <div class="roadmap-item">
+                    <span class="roadmap-phase">Phase 3</span>
+                    <div class="roadmap-text"><strong>State water board deployment</strong>: package as a web application deployable by state water authorities, with district-level user management and automated monthly report delivery to administrators.</div>
+                </div>
+                <div class="roadmap-item">
+                    <span class="roadmap-phase">Phase 4</span>
+                    <div class="roadmap-text"><strong>Temporal forecasting</strong>: add time-series ML models to predict IRI trajectories 6-12 months ahead, enabling proactive intervention before contamination reaches crisis thresholds.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cs-footer-nav">
+            <a href="index.html#projects" class="btn btn-ghost">← Back to Projects</a>
+        </div>
+
+    </main>
+
+    <footer id="contact">
+        <div class="footer-inner">
+            <p class="footer-statement">Let's build something exceptional.</p>
+            <div class="footer-links">
+                <a href="https://linkedin.com/in/yashita-mouli" class="footer-link">LinkedIn ↗</a>
+                <a href="https://github.com/yashitamoulin01-star" class="footer-link">GitHub ↗</a>
+                <a href="mailto:mouliyashita@gmail.com" class="footer-link">mouliyashita@gmail.com ↗</a>
+            </div>
+            <div class="footer-bottom">&copy; Yashita Mouli · B.Tech EXTC, NMIMS MPSTME · 2028</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

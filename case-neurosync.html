@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroSync: Case Study | Yashita Mouli</title>
+    <meta name="description" content="Deep dive into NeuroSync, a real-time multimodal behavioral intelligence powered by three concurrent transformers and a custom cross-attention fusion layer.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <span class="nav-logo">Yashita Mouli</span>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+
+        <!-- â”€â”€ HEADER â”€â”€ -->
+        <header class="case-study-header">
+            <p class="label">Flagship · AI Systems · Active Development</p>
+            <h1 class="case-title">NeuroSync</h1>
+            <p class="cs-tagline">Real-time multimodal behavioral intelligence system. Three transformer models (vision, audio, and language) fused via a custom cross-attention architecture to produce communication quality signals during live conversations.</p>
+            <div class="case-meta">
+                <span>Founder · Architect · Sole Developer</span>
+                <span>PyTorch · ViT · DeBERTa · FastAPI · Next.js</span>
+                <span>Active</span>
+            </div>
+        </header>
+
+        <!-- â”€â”€ METRICS â”€â”€ -->
+        <div class="metrics-strip cs-block">
+            <div class="metric-pill"><strong>3</strong><span>Modalities Fused</span></div>
+            <div class="metric-pill"><strong>&lt;100ms</strong><span>Inference Latency</span></div>
+            <div class="metric-pill"><strong>Cross-Attention</strong><span>Fusion Architecture</span></div>
+            <div class="metric-pill"><strong>INT8</strong><span>Post-Training Quantization</span></div>
+            <div class="metric-pill"><strong>ONNX Runtime</strong><span>Inference Engine</span></div>
+            <div class="metric-pill"><strong>WebSocket</strong><span>Bidirectional Streaming</span></div>
+        </div>
+
+        <!-- â”€â”€ OVERVIEW â”€â”€ -->
+        <section class="case-content-section">
+            <h2>Overview</h2>
+            <p>NeuroSync is a real-time behavioral intelligence platform that analyzes live video and audio streams to produce communication quality scores (<strong>confidence, engagement, and stress</strong>) during conversations, presentations, and interviews. At its core is NAUNCE AI: a custom cross-attention transformer fusion architecture that combines outputs from three specialist encoders operating in parallel.</p>
+            <p>The system captures raw A/V input via WebSocket, routes it through three concurrent encoder pipelines (vision, audio, language), fuses the resulting embeddings through a cross-attention transformer, and returns behavioral scores in under 100 milliseconds, fast enough for real-time feedback overlaid on a live conversation without perceptible lag.</p>
+        </section>
+
+        <!-- â”€â”€ THE PROBLEM â”€â”€ -->
+        <section class="case-content-section">
+            <h2>The Problem</h2>
+            <p>Communication analysis tools almost universally operate on a single modality. Facial expression tools ignore vocal hesitation. Sentiment models discard prosody. Transcription tools throw away everything non-verbal. But human communication is inherently multimodal. The same sentence delivered with different facial expression and vocal tone carries entirely different meaning and intent.</p>
+            <p>Beyond the signal problem, there's a latency problem. Three transformer models in sequence on CPU would take 400ms+. On GPU without optimization, still 150-200ms. Making three transformers usable in real-time required parallel execution, runtime optimization, and quantization. Better hardware alone was not sufficient.</p>
+            <div class="cs-highlight">
+                <strong>Core engineering challenge:</strong> Run ViT (image), AST (audio spectrogram), and DeBERTa (text) simultaneously on live A/V streams, align their embedding spaces through cross-attention, and return a fused behavioral score under 100ms, without specialized inference hardware.
+            </div>
+        </section>
+
+        <!-- â”€â”€ SYSTEM ARCHITECTURE â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">System Architecture</p>
+            <div class="project-cols">
+                <div>
+                    <div class="arch-diagram">
+                        <div class="arch-node arch-highlight">
+                            <div class="arch-node-title">Live A/V Stream</div>
+                            <div class="arch-node-sub">Webcam + Mic · WebSocket Bidirectional</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-parallel">
+                            <div class="arch-node">
+                                <div class="arch-node-title">Vision</div>
+                                <div class="arch-node-sub">ViT + MediaPipe</div>
+                            </div>
+                            <div class="arch-node">
+                                <div class="arch-node-title">Audio</div>
+                                <div class="arch-node-sub">AST + Whisper</div>
+                            </div>
+                            <div class="arch-node">
+                                <div class="arch-node-title">Language</div>
+                                <div class="arch-node-sub">DeBERTa</div>
+                            </div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-node arch-highlight">
+                            <div class="arch-node-title">Cross-Attention Fusion Layer</div>
+                            <div class="arch-node-sub">NAUNCE AI · aligns vision · audio · text embeddings</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-node">
+                            <div class="arch-node-title">ONNX Runtime · INT8</div>
+                            <div class="arch-node-sub">Quantized inference · sub-100ms path</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-node arch-highlight">
+                            <div class="arch-node-title">Behavioral Scores</div>
+                            <div class="arch-node-sub">Confidence · Engagement · Stress</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="label">Deployment Stack</p>
+                    <div class="deploy-chain">
+                        <div class="deploy-layer">
+                            <span class="deploy-layer-label">Frontend</span>
+                            <div class="deploy-layer-tech"><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Vercel</span></div>
+                        </div>
+                        <div class="deploy-layer">
+                            <span class="deploy-layer-label">Inference</span>
+                            <div class="deploy-layer-tech"><span class="chip">FastAPI</span><span class="chip">WebSockets</span><span class="chip">ONNX Runtime</span></div>
+                        </div>
+                        <div class="deploy-layer">
+                            <span class="deploy-layer-label">Models</span>
+                            <div class="deploy-layer-tech"><span class="chip">PyTorch</span><span class="chip">INT8 Quantized</span></div>
+                        </div>
+                        <div class="deploy-layer">
+                            <span class="deploy-layer-label">Data</span>
+                            <div class="deploy-layer-tech"><span class="chip">Supabase</span><span class="chip">PostgreSQL</span></div>
+                        </div>
+                    </div>
+
+                    <p class="label" style="margin-top: 2rem;">Full Tech Stack</p>
+                    <div class="chip-row">
+                        <span class="chip">PyTorch</span><span class="chip">ViT</span><span class="chip">AST</span>
+                        <span class="chip">DeBERTa</span><span class="chip">Whisper</span><span class="chip">MediaPipe</span>
+                        <span class="chip">OpenCV</span><span class="chip">ONNX Runtime</span><span class="chip">FastAPI</span>
+                        <span class="chip">WebSockets</span><span class="chip">Next.js</span><span class="chip">TypeScript</span>
+                        <span class="chip">Supabase</span><span class="chip">PostgreSQL</span><span class="chip">Vercel</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- â”€â”€ TECHNICAL DEEP DIVE â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Technical Deep Dive</p>
+            <div class="deep-dive-grid">
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">Vision Pipeline</div>
+                        <span class="deep-item-tag">ViT + MediaPipe</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>The vision pipeline runs two parallel tracks. <strong>ViT (Vision Transformer)</strong> processes video frames split into 16x16 patches to extract high-level facial expression and micro-expression embeddings, capturing nuanced emotional states that handcrafted feature extractors miss. The patch-based attention mechanism allows ViT to learn which parts of the face are most informative for behavioral inference.</p>
+                        <p><strong>MediaPipe Face Mesh</strong> supplements ViT with 468 facial landmark coordinates and 33 body pose keypoints, providing precise geometric structure for head pose estimation (pitch, yaw, roll) and gaze direction inference. The geometric signal complements ViT's semantic signal. Together, they capture both what the face is expressing and exactly where it is oriented in 3D space.</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">Audio Pipeline</div>
+                        <span class="deep-item-tag">AST + Whisper</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p><strong>AST (Audio Spectrogram Transformer)</strong> processes mel-spectrograms of the audio stream to capture vocal tone, prosody, speech rate, hesitation patterns, and paralinguistic features (the "how" of speech rather than the "what"). It runs on a 2-second sliding window to provide continuous prosodic analysis without waiting for sentence completion.</p>
+                        <p><strong>Whisper</strong> runs concurrently for speech-to-text transcription, feeding clean text to the language pipeline. The critical design decision here is <strong>parallelism</strong>: running Whisper and AST simultaneously eliminates the latency penalty of running them in sequence. Both complete within roughly the same time window, feeding their outputs to the fusion layer together.</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">Language Pipeline</div>
+                        <span class="deep-item-tag">DeBERTa</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p><strong>DeBERTa</strong> (Decoding-enhanced BERT with Disentangled Attention) uses disentangled attention over content and position independently, making it more sensitive to word order and subtle semantic relationships than standard BERT. It processes Whisper transcriptions to extract semantic meaning, sentiment, hedging language, filler word density, and confidence indicators from the spoken content.</p>
+                        <p>DeBERTa operates on a rolling context window of the last 3-5 utterance segments rather than isolated sentences, so the model maintains conversational context. A speaker's confidence level in one response is contextually informed by how they spoke in the previous one.</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">Cross-Attention Fusion Layer</div>
+                        <span class="deep-item-tag">NAUNCE AI Core Architecture</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>The cross-attention fusion transformer is the architectural core of NAUNCE AI. Each modality's embedding attends to the other two: vision embeddings attend to audio and language, audio attends to vision and language, and language attends to vision and audio. This cross-modal attention mechanism learns which parts of each modality are most informative given the current context of the other two.</p>
+                        <p>Simple concatenation of embeddings produces a flat vector that can't capture cross-modal dependencies. Cross-attention learns them. For example: the same furrowed brow during a confident, fast-paced statement carries different behavioral weight than the same expression during a hesitant, slow-paced one. The cross-attention layer learns this weighting automatically, which is a key advantage over rule-based multimodal systems.</p>
+                        <p>The fused representation passes through a multi-layer perceptron behavioral scoring head with three continuous output neurons: <strong>Confidence, Engagement, and Stress</strong>, each normalized to [0, 1].</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">ONNX Runtime + INT8 Quantization</div>
+                        <span class="deep-item-tag">Latency Engineering</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>Three concurrent transformer models is a latency problem at its core. All models are exported from PyTorch to <strong>ONNX format</strong>, enabling ONNX Runtime's graph-level optimizations: operator fusion (fusing adjacent operations into single kernels), constant folding, and hardware-specific execution providers that use optimized CPU instruction sets.</p>
+                        <p><strong>INT8 post-training quantization</strong> reduces all weight tensors from 32-bit floats to 8-bit integers. This cuts model memory footprint ~4x and inference time significantly, with less than 1% degradation on behavioral scoring accuracy benchmarks. The quantization-aware optimization targets the attention layers specifically, where most compute is spent. ONNX + INT8 together is what bridges the gap between "three transformers in PyTorch eager mode at 400ms+" and "three transformers at sub-100ms."</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">WebSocket Streaming Architecture</div>
+                        <span class="deep-item-tag">Real-Time I/O</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>The Next.js frontend captures video frames and audio chunks continuously and streams them to the FastAPI backend via <strong>bidirectional WebSocket</strong>. The backend implements a fully async pipeline: incoming frames and audio chunks are timestamped on receipt, dispatched to their respective encoder pipelines via asyncio task groups, and behavioral scores are pushed back to the client as they complete.</p>
+                        <p>The key synchronization challenge: video frames (30fps), audio windows (every 2 seconds), and transcription segments (variable) arrive at completely different rates. A <strong>timestamp-based synchronization buffer</strong> on the server side holds embeddings until a corresponding embedding from each modality is available within a ±250ms window, then passes the aligned triple to the fusion layer. This prevents the cross-attention transformer from receiving temporally misaligned inputs.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- â”€â”€ CHALLENGES SOLVED â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Challenges Solved</p>
+            <div class="challenges-list">
+                <div class="challenge-item"><strong>Temporal alignment across async streams</strong>: video frames, audio windows, and transcription segments arrive at different rates. A timestamp-based synchronization buffer holds embeddings until all three modalities have a matching window before passing them to the fusion layer.</div>
+                <div class="challenge-item"><strong>Sub-100ms latency for three concurrent transformers</strong>: ONNX Runtime graph optimization + INT8 post-training quantization reduced the combined inference path from 400ms+ to sub-100ms without meaningful accuracy loss.</div>
+                <div class="challenge-item"><strong>Cross-modal embedding space alignment</strong>: ViT, AST, and DeBERTa each produce embeddings in different vector spaces and dimensionalities. Cross-attention handles alignment without requiring explicit projection into a shared space.</div>
+                <div class="challenge-item"><strong>WebSocket backpressure management</strong>: continuous frame upload with continuous score download. Async queue management on the server prevents frame accumulation from lagging behind inference throughput.</div>
+                <div class="challenge-item"><strong>ONNX export for dynamic input shapes</strong>: cross-attention transformers with variable sequence lengths required careful ONNX export configuration using dynamic axes, and operator compatibility verification for INT8 quantization.</div>
+                <div class="challenge-item"><strong>Graceful modality degradation</strong>: if camera or microphone access is unavailable, the system falls back to available modalities with confidence-calibrated score adjustments rather than failing hard.</div>
+            </div>
+        </div>
+
+        <!-- â”€â”€ RESULTS â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Results & Performance</p>
+            <div class="result-grid">
+                <div class="result-item">
+                    <div class="result-value">&lt;100ms</div>
+                    <div class="result-label">Inference Latency</div>
+                    <div class="result-note">End-to-end from A/V frame receipt to behavioral score delivery</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value">3</div>
+                    <div class="result-label">Modalities Fused</div>
+                    <div class="result-note">Vision, Audio, Language running in parallel via async pipelines</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value">~4x</div>
+                    <div class="result-label">Size Reduction</div>
+                    <div class="result-note">INT8 quantization vs FP32 with &lt;1% accuracy degradation</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value">3</div>
+                    <div class="result-label">Behavioral Scores</div>
+                    <div class="result-note">Confidence · Engagement · Stress, continuous 0-1 outputs</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- â”€â”€ LESSONS LEARNED â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Lessons Learned</p>
+            <div class="lesson-grid">
+                <div class="lesson-card">
+                    <div class="lesson-num">01</div>
+                    <div class="lesson-title">Cross-attention is strictly better than concatenation for multi-modal fusion</div>
+                    <div class="lesson-body">Concatenating embeddings produces a flat vector with no mechanism to learn cross-modal dependencies. Cross-attention learns which aspects of each modality are most informative given the context of the others - the architectural gap is significant and measurable.</div>
+                </div>
+                <div class="lesson-card">
+                    <div class="lesson-num">02</div>
+                    <div class="lesson-title">ONNX + INT8 quantization is non-negotiable for real-time transformer inference</div>
+                    <div class="lesson-body">PyTorch eager mode is not a viable path to real-time three-transformer inference. ONNX graph optimization and INT8 quantization together cut latency from 400ms+ to sub-100ms. This was an engineering prerequisite, not an optimization afterthought.</div>
+                </div>
+                <div class="lesson-card">
+                    <div class="lesson-num">03</div>
+                    <div class="lesson-title">Async stream synchronization requires explicit timestamp anchoring</div>
+                    <div class="lesson-body">Video frames at 30fps, audio at 2-second windows, and text at sentence boundaries arrive at completely different rates. Without timestamp-based synchronization, the fusion layer receives temporally misaligned embeddings and outputs incoherent scores.</div>
+                </div>
+                <div class="lesson-card">
+                    <div class="lesson-num">04</div>
+                    <div class="lesson-title">MediaPipe geometric landmarks and ViT semantic embeddings are complementary, not redundant</div>
+                    <div class="lesson-body">ViT extracts high-level semantic facial information. MediaPipe provides precise geometric structure. Their information content is orthogonal - combining both is strictly better than either alone in ablation testing.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- â”€â”€ FUTURE ROADMAP â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Future Roadmap</p>
+            <div class="roadmap-list">
+                <div class="roadmap-item">
+                    <span class="roadmap-phase">Phase 1</span>
+                    <div class="roadmap-text"><strong>rPPG physiological signals</strong>: Extract heart rate variability from RGB video frames using remote photoplethysmography, adding a fourth physiological modality without any additional hardware beyond a webcam.</div>
+                </div>
+                <div class="roadmap-item">
+                    <span class="roadmap-phase">Phase 2</span>
+                    <div class="roadmap-text"><strong>Longitudinal session tracking</strong>: Build session history in Supabase to track behavioral trends across multiple sessions, identifying improvement trajectories and stress pattern correlations over time.</div>
+                </div>
+                <div class="roadmap-item">
+                    <span class="roadmap-phase">Phase 3</span>
+                    <div class="roadmap-text"><strong>Conversation coaching API</strong>: Real-time micro-interventions ("slow your speech pace," "maintain eye contact") generated from behavioral score trajectories and delivered as in-session overlays.</div>
+                </div>
+                <div class="roadmap-item">
+                    <span class="roadmap-phase">Phase 4</span>
+                    <div class="roadmap-text"><strong>Enterprise SDK</strong>: Package NAUNCE AI as an embeddable SDK for interview platforms, presentation coaching tools, and sales training applications that need behavioral intelligence without building the pipeline themselves.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cs-footer-nav">
+            <a href="index.html#projects" class="btn btn-ghost">← Back to Projects</a>
+        </div>
+
+    </main>
+
+    <footer id="contact">
+        <div class="footer-inner">
+            <p class="footer-statement">Let's build something exceptional.</p>
+            <div class="footer-links">
+                <a href="https://linkedin.com/in/yashita-mouli" class="footer-link">LinkedIn ↗</a>
+                <a href="https://github.com/yashitamoulin01-star" class="footer-link">GitHub ↗</a>
+                <a href="mailto:mouliyashita@gmail.com" class="footer-link">mouliyashita@gmail.com ↗</a>
+            </div>
+            <div class="footer-bottom">&copy; Yashita Mouli · B.Tech EXTC, NMIMS MPSTME · 2028</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

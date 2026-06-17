@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Business of Professionals: Case Study | Yashita Mouli</title>
+    <meta name="description" content="The Business of Professionals, a multi-tenant professional reputation SaaS platform with trust scoring, Razorpay billing, and PostgreSQL RLS.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <span class="nav-logo">Yashita Mouli</span>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+
+        <!-- â”€â”€ HEADER â”€â”€ -->
+        <header class="case-study-header">
+            <p class="label">SaaS · Reputation Platform · Client Project</p>
+            <h1 class="case-title">The Business of Professionals</h1>
+            <p class="cs-tagline">Multi-tenant professional reputation and trust platform. Verified profiles, fraud-resistant peer ratings, trust score algorithm, recruiter discovery, and Razorpay subscription billing, built on PostgreSQL RLS for strict tenant isolation.</p>
+            <div class="case-meta">
+                <span>Lead Architect & Developer</span>
+                <span>Next.js · Supabase · Razorpay · Cloudflare</span>
+                <span>₹50,000 project value</span>
+                <span>Live</span>
+            </div>
+        </header>
+
+        <!-- â”€â”€ METRICS â”€â”€ -->
+        <div class="metrics-strip cs-block">
+            <div class="metric-pill"><strong>Multi-Tenant</strong><span>SaaS Architecture</span></div>
+            <div class="metric-pill"><strong>RLS</strong><span>Row-Level Security</span></div>
+            <div class="metric-pill"><strong>Zero-Downtime</strong><span>Deployment Strategy</span></div>
+            <div class="metric-pill"><strong>Razorpay</strong><span>Subscription Billing</span></div>
+            <div class="metric-pill"><strong>Cloudflare</strong><span>DDoS · WAF · CDN</span></div>
+            <div class="metric-pill"><strong>₹50K</strong><span>Project Value</span></div>
+        </div>
+
+        <!-- â”€â”€ OVERVIEW â”€â”€ -->
+        <section class="case-content-section">
+            <h2>Overview</h2>
+            <p>The Business of Professionals (TBoP) is a professional reputation and trust platform built for the Indian market. Professionals create verified profiles, receive peer ratings from colleagues and clients, and accumulate a <strong>Trust Score</strong>, a composite metric that signals credibility to recruiters and collaborators. Recruiters access a discovery dashboard with filters to find high-trust professionals by domain and experience.</p>
+            <p>The platform is a multi-tenant SaaS product: professionals subscribe individually, each with strict data isolation enforced at the PostgreSQL layer. Subscription billing runs through Razorpay with webhook-driven subscription state management. The platform sits behind Cloudflare for DDoS protection, WAF rules, and CDN caching.</p>
+        </section>
+
+        <!-- â”€â”€ THE PROBLEM â”€â”€ -->
+        <section class="case-content-section">
+            <h2>The Problem</h2>
+            <p>Professional credentialing in India is fragmented and gameable. LinkedIn endorsements can be traded between friends. Certificates can be faked or inflated. There's no system that lets professionals demonstrate trustworthiness through verified, fraud-resistant peer ratings from people who've actually worked with them.</p>
+            <p>Recruiters face the same problem from the other side: they can't distinguish genuinely reliable professionals from those who've simply optimized their visible credentials. They need a third-party trust signal that's harder to game than self-reported achievements.</p>
+            <div class="cs-highlight">
+                <strong>Core product challenge:</strong> Build a trust system that's useful enough for professionals to pay for, but resistant enough to manipulation that recruiters can rely on it as a genuine signal, not just another vanity metric.
+            </div>
+        </section>
+
+        <!-- â”€â”€ SYSTEM ARCHITECTURE â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">System Architecture</p>
+            <div class="project-cols">
+                <div>
+                    <div class="arch-diagram">
+                        <div class="arch-node arch-highlight">
+                            <div class="arch-node-title">Next.js App Router</div>
+                            <div class="arch-node-sub">Frontend · SSR + Client Components</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-node">
+                            <div class="arch-node-title">Vercel Edge Network</div>
+                            <div class="arch-node-sub">Global distribution · Edge functions</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-node">
+                            <div class="arch-node-title">Cloudflare</div>
+                            <div class="arch-node-sub">DDoS · WAF · CDN · Bot Protection</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-node arch-highlight">
+                            <div class="arch-node-title">Supabase</div>
+                            <div class="arch-node-sub">Auth + PostgreSQL + RLS Policies</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-node">
+                            <div class="arch-node-title">Razorpay</div>
+                            <div class="arch-node-sub">Subscription Billing · Webhooks</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="label">Trust Score Architecture</p>
+                    <div class="arch-diagram">
+                        <div class="arch-node">
+                            <div class="arch-node-title">Peer Ratings Input</div>
+                            <div class="arch-node-sub">Verified colleagues and clients only</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-node arch-highlight">
+                            <div class="arch-node-title">Fraud Detection Layer</div>
+                            <div class="arch-node-sub">Coordinated rating pattern detection</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-node">
+                            <div class="arch-node-title">Weighted Scoring Engine</div>
+                            <div class="arch-node-sub">Recency bias · reviewer credibility</div>
+                        </div>
+                        <div class="arch-arrow">↓</div>
+                        <div class="arch-node arch-highlight">
+                            <div class="arch-node-title">Trust Score</div>
+                            <div class="arch-node-sub">Composite 0-100 credibility metric</div>
+                        </div>
+                    </div>
+
+                    <p class="label" style="margin-top: 2rem;">Full Tech Stack</p>
+                    <div class="chip-row">
+                        <span class="chip">Next.js</span><span class="chip">TypeScript</span>
+                        <span class="chip">Supabase</span><span class="chip">PostgreSQL</span>
+                        <span class="chip">Razorpay</span><span class="chip">Cloudflare</span>
+                        <span class="chip">Vercel</span><span class="chip">Tailwind CSS</span>
+                        <span class="chip">JWT Auth</span><span class="chip">RLS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- â”€â”€ PLATFORM FEATURES â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Platform Features</p>
+            <div class="project-cols">
+                <div>
+                    <div class="challenges-list">
+                        <div class="challenge-item"><strong>Verified Profiles:</strong> document-based professional verification with admin review queue; verification status displayed prominently on profile</div>
+                        <div class="challenge-item"><strong>Peer Rating System:</strong> only verified connections can rate each other; ratings require relationship context (colleague, client, manager)</div>
+                        <div class="challenge-item"><strong>Trust Score (0-100):</strong> composite metric combining peer rating quality, recency, reviewer credibility, and verification completeness</div>
+                        <div class="challenge-item"><strong>Recruiter Discovery Dashboard:</strong> filter professionals by domain, Trust Score threshold, location, and experience - with reputation analytics for shortlisting</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="challenges-list">
+                        <div class="challenge-item"><strong>Reputation Analytics:</strong> professionals see their Trust Score trend, rating breakdown, and peer feedback themes over time</div>
+                        <div class="challenge-item"><strong>Admin Moderation:</strong> dashboard for reported profiles, fake rating investigations, and escalation workflows with audit trail</div>
+                        <div class="challenge-item"><strong>Razorpay Subscription Billing:</strong> tiered plans for professionals and recruiters; webhook-driven subscription state sync with idempotent event processing</div>
+                        <div class="challenge-item"><strong>Zero-Downtime Deployments:</strong> Vercel's atomic deployment model guarantees no service interruption on new releases</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- â”€â”€ TECHNICAL DEEP DIVE â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Technical Deep Dive</p>
+            <div class="deep-dive-grid">
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">Multi-Tenant Isolation with PostgreSQL RLS</div>
+                        <span class="deep-item-tag">Data Security</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>Multi-tenancy on a shared database requires strict data isolation between users. Rather than application-layer filtering (which is fragile and bypassable), TBoP uses <strong>PostgreSQL Row Level Security policies</strong> that enforce isolation at the database level. Every table has RLS enabled with explicit policies for each user role.</p>
+                        <p>Example policies: professionals can only SELECT/UPDATE their own profile WHERE user_id = auth.uid(); recruiters can SELECT profiles WHERE is_public = true; admins bypass RLS for moderation. Policies were stress-tested via direct psql sessions impersonating each role, not just through the application flow. Edge cases like a user accessing their own rating history vs. another user's were explicitly tested.</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">Trust Score Algorithm</div>
+                        <span class="deep-item-tag">Fraud-Resistant Reputation Metric</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>The Trust Score combines four weighted components: <strong>peer rating quality</strong> (average rating from verified connections, weighted by reviewer credibility score), <strong>recency bias</strong> (exponential decay function so recent ratings carry more weight than old ones), <strong>verification completeness</strong> (education, employment, identity verification badges add score multipliers), and <strong>platform activity</strong> (responsiveness to rating requests, profile completeness).</p>
+                        <p>Fraud resistance comes from coordinated rating pattern detection: if a cluster of accounts rates the same professional within a short time window, with similar reviewer credibility and no historical relationship, the ratings are flagged for manual review before counting toward the score. The algorithm is designed to make gaming it require more effort than simply doing good professional work.</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">Razorpay Subscription Billing</div>
+                        <span class="deep-item-tag">Payment Infrastructure</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>Subscription state is the source of truth for feature access. The billing flow: Razorpay Subscription created on plan selection → frontend redirects to Razorpay checkout → on payment, Razorpay fires a webhook event → Supabase Edge Function receives and validates the webhook signature → subscription record upserted in PostgreSQL → user's plan entitlements updated.</p>
+                        <p><strong>Idempotency is critical:</strong> webhook events can be delivered more than once. Every webhook handler checks if the event_id has already been processed before making any state changes. This prevents double-billing, double-activation, or double-cancellation from duplicate webhook delivery. The webhook endpoint returns 200 immediately and processes asynchronously to prevent Razorpay timeout retries.</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">Cloudflare Security Layer</div>
+                        <span class="deep-item-tag">DDoS · WAF · Bot Protection</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>A reputation platform is a natural target for coordinated attacks: fake account creation, scraping of professional data, and automated rating submission. Cloudflare handles the first line of defense: <strong>DDoS mitigation</strong> for volumetric attacks, <strong>WAF rules</strong> for OWASP Top 10 patterns, and <strong>Bot Fight Mode</strong> for automated rating submission.</p>
+                        <p>Custom WAF rules rate-limit rating submission endpoints per IP and per authenticated user. Cloudflare Analytics flagged suspicious traffic patterns within the first 48 hours of launch. Bot activity that Cloudflare automatically blocked before it reached the origin. The WAF layer proved valuable well before the platform reached significant scale.</p>
+                    </div>
+                </div>
+
+                <div class="deep-item">
+                    <div class="deep-item-header">
+                        <div class="deep-item-name">Admin Moderation Dashboard</div>
+                        <span class="deep-item-tag">Content Safety + Audit Trail</span>
+                    </div>
+                    <div class="deep-item-body">
+                        <p>The moderation dashboard surfaces reported profiles, flagged ratings, and pending verification reviews in a unified queue. Admins see: report count per target, flagged rating patterns, relationship verification status, and the full history of actions taken on each account.</p>
+                        <p>Escalation workflows: Level 1 (automated flag) → Level 2 (admin review) → Level 3 (appeal process). Every admin action writes an audit log entry with admin_id, action_type, target_id, and timestamp, making the moderation history fully auditable and preventing unilateral abusive banning.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- â”€â”€ CHALLENGES SOLVED â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Challenges Solved</p>
+            <div class="challenges-list">
+                <div class="challenge-item"><strong>Multi-tenant data isolation</strong>: PostgreSQL RLS policies enforce per-user data boundaries at the database layer, not the application layer, giving guarantees that hold even under API bugs.</div>
+                <div class="challenge-item"><strong>Fraud-resistant trust scoring</strong>: coordinated rating pattern detection and reviewer credibility weighting make manipulating the Trust Score more effort than earning a genuine reputation.</div>
+                <div class="challenge-item"><strong>Idempotent webhook processing</strong>: Razorpay webhooks can be delivered multiple times. Every handler checks event_id for prior processing before applying any state changes, preventing double-billing or double-activation.</div>
+                <div class="challenge-item"><strong>Zero-downtime deployments</strong>: Vercel's atomic deployment model combined with database migration strategy (backward-compatible schema changes first, then code deploy) guarantees no interruption to live subscriptions.</div>
+                <div class="challenge-item"><strong>Bot-resistant rating submission</strong>: Cloudflare WAF rules rate-limit rating endpoints per IP and per user; Bot Fight Mode catches automated rating submission patterns before they reach the application.</div>
+                <div class="challenge-item"><strong>Escalation-grade admin tooling</strong>: full audit trail on every moderation action with three-level escalation workflow ensures accountability and prevents both under-moderation and abusive banning.</div>
+            </div>
+        </div>
+
+        <!-- â”€â”€ RESULTS â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Results</p>
+            <div class="result-grid">
+                <div class="result-item">
+                    <div class="result-value">₹50K</div>
+                    <div class="result-label">Project Value</div>
+                    <div class="result-note">Delivered within scope and timeline</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value">Live</div>
+                    <div class="result-label">Production Status</div>
+                    <div class="result-note">Zero-downtime architecture in production</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value">RLS</div>
+                    <div class="result-label">Tenant Isolation</div>
+                    <div class="result-note">Database-layer enforcement on all tables</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value">Live</div>
+                    <div class="result-label">Subscription Billing</div>
+                    <div class="result-note">Razorpay with idempotent webhook handling</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- â”€â”€ LESSONS LEARNED â”€â”€ -->
+        <div class="cs-block">
+            <p class="label">Lessons Learned</p>
+            <div class="lesson-grid">
+                <div class="lesson-card">
+                    <div class="lesson-num">01</div>
+                    <div class="lesson-title">Multi-tenant isolation belongs in the database, not the application</div>
+                    <div class="lesson-body">Application-layer access control is bypassable under bugs, misconfiguration, or direct database access. RLS policies enforced in PostgreSQL hold unconditionally. Test them by impersonating each role in psql, not just through the app.</div>
+                </div>
+                <div class="lesson-card">
+                    <div class="lesson-num">02</div>
+                    <div class="lesson-title">Webhook idempotency is non-negotiable in payment systems</div>
+                    <div class="lesson-body">Razorpay webhooks can arrive multiple times for the same event. Processing a payment event twice can double a user's subscription, credit, or entitlement. Always check event_id for prior processing before applying any state change - and respond 200 immediately to prevent retry loops.</div>
+                </div>
+                <div class="lesson-card">
+                    <div class="lesson-num">03</div>
+                    <div class="lesson-title">Design trust algorithms adversarially from day one</div>
+                    <div class="lesson-body">Before writing the Trust Score algorithm, I spent a day trying to game it. Every exploit I found got a countermeasure built in. Rating systems that aren't designed with adversarial scenarios in mind get gamed within weeks of launch.</div>
+                </div>
+                <div class="lesson-card">
+                    <div class="lesson-num">04</div>
+                    <div class="lesson-title">Cloudflare WAF catches real attacks faster than you expect</div>
+                    <div class="lesson-body">Bot activity was detectable in Cloudflare Analytics within 48 hours of launch - well before any manual detection would have caught it. For any platform handling user reputation or financial data, a WAF layer is infrastructure, not a luxury.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cs-footer-nav">
+            <a href="index.html#projects" class="btn btn-ghost">← Back to Projects</a>
+        </div>
+
+    </main>
+
+    <footer id="contact">
+        <div class="footer-inner">
+            <p class="footer-statement">Let's build something exceptional.</p>
+            <div class="footer-links">
+                <a href="https://linkedin.com/in/yashita-mouli" class="footer-link">LinkedIn ↗</a>
+                <a href="https://github.com/yashitamoulin01-star" class="footer-link">GitHub ↗</a>
+                <a href="mailto:mouliyashita@gmail.com" class="footer-link">mouliyashita@gmail.com ↗</a>
+            </div>
+            <div class="footer-bottom">&copy; Yashita Mouli · B.Tech EXTC, NMIMS MPSTME · 2028</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
