@@ -25,5 +25,4 @@ To run this locally, you just need a local server. No build step is required.
 3. Open `index.html`
 
 ## Connect
-* [GitHub Profile](https://github.com/yashitamoulin01-star)
-* [Portfolio Website](#) (Add your deployed URL here)
+* [Portfolio Website](#) (http://my-portfolio-flax-delta-61.vercel.app/)
